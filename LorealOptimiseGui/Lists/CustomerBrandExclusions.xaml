@@ -1,0 +1,61 @@
+﻿<local:BaseListUserControl x:Class="LorealOptimiseGui.Lists.CustomerBrandExclusions"
+                           x:TypeArguments="Lists:CustomerBrandExclusionManager, LorealOptimiseData:CustomerBrandExclusion"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Name="lblTitle" Grid.Row="0" Margin="2" Content="Customer Brand Exclusions" HorizontalAlignment="Left"></Label>
+	<Button Grid.Row="0" Grid.Column="1" Name="btnRefresh" Content="Refresh" Click="Button_Click"></Button>
+        <dxg:GridControl Grid.Row="1" Grid.ColumnSpan="2" DataSource="{Binding}" x:Name="grdCustomerBrandExclusions">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Customer.SalesArea.SalesOrganization.Code" Header="Sales Organisation Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.SalesOrganization.Name" Header="Sales Organisation Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.DistributionChannel.Code" Header="Distribution Channel Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.DistributionChannel.Name" Header="Distribution Channel Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.Division.Code" Header="Division Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.Division.Name" Header="Division Name" ReadOnly="True" />                
+                <dxg:GridColumn FieldName="Customer.CustomerGroup.Code" Header="Customer Hierarchy 3 Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.CustomerGroup.Name" Header="Customer Hierarchy 3 Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Customer.AccountNumber" Header="Account No" ReadOnly="True" />
+                
+                <dxg:GridColumn FieldName="IDCustomer" Header="Store Name">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboCustomer" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
+                <dxg:GridColumn FieldName="BrandAxe.Signature.Code" Header="Signature Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="BrandAxe.Signature.Name" Header="Signature Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="BrandAxe.Code" Header="Brand/Axe Code" ReadOnly="True" />
+                
+                <dxg:GridColumn FieldName="IDBrandAxe" Header="Brand/Axe Name">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboBrandAxe" DisplayMember="FullNameWithSignature" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                
+                <dxg:GridColumn FieldName="Customer.SalesEmployee.Name" Header="RBM Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Excluded">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings></dxe:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" ShowAutoFilterRow="True" NewItemRowPosition="Top" ShowingEditor="TableView_ShowingEditor" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</local:BaseListUserControl>

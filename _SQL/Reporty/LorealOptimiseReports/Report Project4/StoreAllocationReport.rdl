@@ -1,0 +1,927 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="LorealOptimise">
+      <rd:DataSourceID>562cbb72-31cd-41de-a6c0-8e977ceb11fe</rd:DataSourceID>
+      <DataSourceReference>LorealOptimise</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="divisionID">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>divisionID</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="salesDrive">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SalesDrive</DataSetName>
+          <ValueField>SalesDriveName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Sales Drive</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SalesDrive</DataSetName>
+          <ValueField>SalesDriveName</ValueField>
+          <LabelField>SalesDriveName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Animation">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Animation</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>AnimationParametr</DataSetName>
+          <ValueField>AnimationID</ValueField>
+          <LabelField>AnimatioName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Version">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>VersionTopOne</DataSetName>
+          <ValueField>VersionID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Allocation Version</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Versions</DataSetName>
+          <ValueField>VersionID</ValueField>
+          <LabelField>VersionName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="employee">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>employee</DataSetName>
+          <ValueField>EmployeeName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Sales Employee</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>employee</DataSetName>
+          <ValueField>EmployeeName</ValueField>
+          <LabelField>EmployeeName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="CustomerGroup">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CustomerGroups</DataSetName>
+          <ValueField>CustomerGroup</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Customer Group</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CustomerGroups</DataSetName>
+          <ValueField>CustomerGroup</ValueField>
+          <LabelField>CustomerGroup</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="footer">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>Footer</DataSetName>
+          <ValueField>Footer</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Report_Parameter_4</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Footer</DataSetName>
+          <ValueField>Footer</ValueField>
+          <LabelField>Footer</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.5cm</RightMargin>
+  <LeftMargin>0.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>1f715e6a-6068-4c6f-af71-14077a1c5899</rd:ReportID>
+  <PageWidth>21cm</PageWidth>
+  <DataSets>
+    <DataSet Name="LorealOptimise">
+      <Fields>
+        <Field Name="VersionName">
+          <DataField>VersionName</DataField>
+        </Field>
+        <Field Name="Customer_AccountNumber">
+          <DataField>Customer_AccountNumber</DataField>
+        </Field>
+        <Field Name="Customer_SalesEmployeeName">
+          <DataField>Customer_SalesEmployeeName</DataField>
+        </Field>
+        <Field Name="AnimationName">
+          <DataField>AnimationName</DataField>
+        </Field>
+        <Field Name="ItemGroup">
+          <DataField>ItemGroup</DataField>
+        </Field>
+        <Field Name="ProductDescription">
+          <DataField>ProductDescription</DataField>
+        </Field>
+        <Field Name="MaterialCode">
+          <DataField>MaterialCode</DataField>
+        </Field>
+        <Field Name="AllocationQuantity">
+          <DataField>AllocationQuantity</DataField>
+        </Field>
+        <Field Name="Customer_Name">
+          <DataField>Customer_Name</DataField>
+        </Field>
+        <Field Name="CustomerGroup_Name">
+          <DataField>CustomerGroup_Name</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_storeAllocationReport</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@allocationVersion">
+            <Value>=Parameters!Version.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@employee">
+            <Value>=Parameters!employee.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@customerGroup">
+            <Value>=Parameters!CustomerGroup.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="employee">
+      <Fields>
+        <Field Name="EmployeeName">
+          <DataField>EmployeeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_storeAllocationReport_EmployeeParametr</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@versionID">
+            <Value>=Parameters!Version.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="SalesDrive">
+      <Fields>
+        <Field Name="SalesDriveName">
+          <DataField>SalesDriveName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_storeAllocationReport_salesDriveParameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="Versions">
+      <Fields>
+        <Field Name="VersionName">
+          <DataField>VersionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>[up_storeAllocationReport_versionParameter]</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@animationID">
+            <Value>=Parameters!Animation.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="CustomerGroups">
+      <Fields>
+        <Field Name="CustomerGroup">
+          <DataField>CustomerGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandText>declare @t table
+(CustomerGroup nvarchar(max))
+
+insert into @t 
+	select 'All groups'
+	
+
+if @divisionID is not null
+	insert into @t
+	SELECT distinct cusgr.Name
+	FROM dbo.[Version] as a  with(nolock) 
+	inner join dbo.Animation as b  with(nolock) on (a.IDAnimation = b.ID)
+	inner join dbo.AnimationCustomerGroup as gr with(nolock) on (gr.IDAnimation = b.ID)
+	inner join dbo.CustomerGroup as cusgr with(nolock) on (cusgr.ID = gr.IDCustomerGroup)
+	inner join dbo.SalesDrive as c  with(nolock) on (b.IDSalesDrive = c.ID)
+	where c.Name = @salesDrive  AND c.IDDivision = @divisionID
+	order by cusgr.Name
+else
+	insert into @t
+	SELECT distinct cusgr.Name
+	FROM dbo.[Version] as a  with(nolock) 
+	inner join dbo.Animation as b with(nolock)  on (a.IDAnimation = b.ID)
+	inner join dbo.AnimationCustomerGroup as gr with(nolock) on (gr.IDAnimation = b.ID)
+	inner join dbo.CustomerGroup as cusgr with(nolock) on (cusgr.ID = gr.IDCustomerGroup)
+	inner join dbo.SalesDrive as c  with(nolock) on (b.IDSalesDrive = c.ID)
+	where c.Name = @salesDrive  
+	order by cusgr.Name	
+
+select * from @t</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="Footer">
+      <Fields>
+        <Field Name="Footer">
+          <DataField>Footer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandText>If @DIvisionID is not null
+SELECT SettingValue AS Footer FROM dbo.ApplicationSettings
+WHERE SettingKey = 'StoreAllocationReportFooter'
+AND IDDivision = @DIvisionID
+else
+SELECT SettingValue AS Footer FROM dbo.ApplicationSettings
+WHERE SettingKey = 'StoreAllocationReportFooter'</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@DIvisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="AnimationParametr">
+      <Fields>
+        <Field Name="AnimatioName">
+          <DataField>AnimatioName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AnimationID">
+          <DataField>AnimationID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_storeAllocationReport_animationParameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="VersionTopOne">
+      <Fields>
+        <Field Name="VersionName">
+          <DataField>VersionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_storeAllocationReport_versionParameterTopOne</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@animationID">
+            <Value>=Parameters!Animation.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!divisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>19cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <List Name="List1">
+        <Sorting>
+          <SortBy>
+            <SortExpression>=Fields!Customer_SalesEmployeeName.Value</SortExpression>
+            <Direction>Ascending</Direction>
+          </SortBy>
+          <SortBy>
+            <SortExpression>=Fields!Customer_Name.Value</SortExpression>
+            <Direction>Ascending</Direction>
+          </SortBy>
+          <SortBy>
+            <SortExpression>=Fields!Customer_Name.Value</SortExpression>
+            <Direction>Ascending</Direction>
+          </SortBy>
+        </Sorting>
+        <Left>0.25cm</Left>
+        <DataSetName>LorealOptimise</DataSetName>
+        <ReportItems>
+          <Textbox Name="textbox1">
+            <rd:DefaultName>textbox1</rd:DefaultName>
+            <Top>0.25cm</Top>
+            <Width>7.5cm</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <FontSize>12pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>11</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.75cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>STORE ALLOCATION REPORT</Value>
+          </Textbox>
+          <Textbox Name="textbox9">
+            <rd:DefaultName>textbox9</rd:DefaultName>
+            <Top>2cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>10</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Store name:</Value>
+          </Textbox>
+          <Textbox Name="textbox8">
+            <rd:DefaultName>textbox8</rd:DefaultName>
+            <Top>1.25cm</Top>
+            <Width>7.75cm</Width>
+            <Style>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>9</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.25cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>=Fields!Customer_AccountNumber.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox7">
+            <rd:DefaultName>textbox7</rd:DefaultName>
+            <Top>1.25cm</Top>
+            <Width>3.5cm</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>8</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Account number:</Value>
+          </Textbox>
+          <Textbox Name="Customer_Name">
+            <rd:DefaultName>Customer_Name</rd:DefaultName>
+            <Top>2cm</Top>
+            <Width>7.75cm</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>7</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.25cm</Left>
+            <Height>0.68571cm</Height>
+            <Value>=Fields!Customer_Name.Value</Value>
+          </Textbox>
+          <Table Name="table1">
+            <ZIndex>6</ZIndex>
+            <DataSetName>LorealOptimise</DataSetName>
+            <Top>5.75cm</Top>
+            <Width>18.25cm</Width>
+            <Details>
+              <TableRows>
+                <TableRow>
+                  <Visibility>
+                    <Hidden>=iif(Fields!AllocationQuantity.Value &gt; 0, false, true)</Hidden>
+                  </Visibility>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="AnimationName">
+                          <rd:DefaultName>AnimationName</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>4</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!AnimationName.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="ItemGroup">
+                          <rd:DefaultName>ItemGroup</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>3</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!ItemGroup.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="ProductDescription">
+                          <rd:DefaultName>ProductDescription</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>2</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!ProductDescription.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="MaterialCode">
+                          <rd:DefaultName>MaterialCode</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>1</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!MaterialCode.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="AllocationQuantity">
+                          <rd:DefaultName>AllocationQuantity</rd:DefaultName>
+                          <Style>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!AllocationQuantity.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.53333cm</Height>
+                </TableRow>
+              </TableRows>
+            </Details>
+            <Header>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox2">
+                          <rd:DefaultName>textbox2</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Bisque</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>9</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Animation Name</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox3">
+                          <rd:DefaultName>textbox3</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Bisque</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>8</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Item Group</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox4">
+                          <rd:DefaultName>textbox4</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Bisque</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>7</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Material Name</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox5">
+                          <rd:DefaultName>textbox5</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Bisque</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>6</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Material Code</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox6">
+                          <rd:DefaultName>textbox6</rd:DefaultName>
+                          <Style>
+                            <BackgroundColor>Bisque</BackgroundColor>
+                            <BorderColor>
+                              <Default>LightGrey</Default>
+                            </BorderColor>
+                            <BorderStyle>
+                              <Default>Solid</Default>
+                            </BorderStyle>
+                            <FontFamily>Tahoma</FontFamily>
+                            <FontWeight>700</FontWeight>
+                            <TextAlign>Center</TextAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                          <ZIndex>5</ZIndex>
+                          <CanGrow>true</CanGrow>
+                          <Value>Allocation Quantity</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.55873cm</Height>
+                </TableRow>
+              </TableRows>
+              <RepeatOnNewPage>true</RepeatOnNewPage>
+            </Header>
+            <TableColumns>
+              <TableColumn>
+                <Width>3.75cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.25cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.75cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>3.25cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>4.25cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>1.09206cm</Height>
+            <Left>0.25cm</Left>
+          </Table>
+          <Textbox Name="textbox10">
+            <Top>2.75cm</Top>
+            <Width>2.75cm</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>5</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Sales Employee:</Value>
+          </Textbox>
+          <Textbox Name="textbox11">
+            <Top>3.5cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>4</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Date generated:</Value>
+          </Textbox>
+          <Textbox Name="textbox12">
+            <Top>4.25cm</Top>
+            <Width>2.53968cm</Width>
+            <Style>
+              <FontSize>8pt</FontSize>
+              <FontWeight>700</FontWeight>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>3</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>0.5cm</Left>
+            <Height>0.63492cm</Height>
+            <Value>Sales Drive:</Value>
+          </Textbox>
+          <Textbox Name="textbox13">
+            <Top>2.75cm</Top>
+            <Width>7.75cm</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>2</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.25cm</Left>
+            <Height>0.68571cm</Height>
+            <Value>=Fields!Customer_SalesEmployeeName.Value</Value>
+          </Textbox>
+          <Textbox Name="textbox14">
+            <Top>3.5cm</Top>
+            <Width>7.75cm</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <Format>dd.MM.yyyy, hh:mm:ss</Format>
+              <TextAlign>Left</TextAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <ZIndex>1</ZIndex>
+            <CanGrow>true</CanGrow>
+            <Left>4.25cm</Left>
+            <Height>0.68571cm</Height>
+            <Value>=Now</Value>
+          </Textbox>
+          <Textbox Name="textbox15">
+            <Top>4.25cm</Top>
+            <Width>7.75cm</Width>
+            <Style>
+              <FontFamily>Tahoma</FontFamily>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+            <CanGrow>true</CanGrow>
+            <Left>4.25cm</Left>
+            <Height>0.68571cm</Height>
+            <Value>=Parameters!salesDrive.Value</Value>
+          </Textbox>
+        </ReportItems>
+        <Top>0.25cm</Top>
+        <Style>
+          <Color>SlateGray</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+        </Style>
+        <Grouping Name="list1_Customer_Name">
+          <GroupExpressions>
+            <GroupExpression>=Fields!Customer_Name.Value</GroupExpression>
+          </GroupExpressions>
+          <PageBreakAtEnd>true</PageBreakAtEnd>
+        </Grouping>
+        <Height>8.38492cm</Height>
+      </List>
+    </ReportItems>
+    <Height>8.75cm</Height>
+  </Body>
+  <Language>en-US</Language>
+  <PageFooter>
+    <PrintOnFirstPage>true</PrintOnFirstPage>
+    <ReportItems>
+      <Textbox Name="textbox16">
+        <rd:DefaultName>textbox16</rd:DefaultName>
+        <Top>0.25cm</Top>
+        <Width>18cm</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Left>0.5cm</Left>
+        <Height>1.25cm</Height>
+        <Value>=Parameters!footer.Value</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>2cm</Height>
+    <PrintOnLastPage>true</PrintOnLastPage>
+  </PageFooter>
+  <TopMargin>0.5cm</TopMargin>
+  <PageHeight>29.7cm</PageHeight>
+</Report>

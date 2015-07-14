@@ -1,0 +1,66 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.ReplaceAccountNumber"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui"                                   
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1" xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core">
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Name="lblTitle" Content="Replace account number" Grid.Row="0" Grid.Column="0" />
+        <Label Name="lblAccountNumber" Content="Account Number" Grid.Row="1" Grid.Column="0" />
+        <Label Name="lblStoreName" Content="Store Name" Grid.Row="2" Grid.Column="0" />
+        
+        <TextBox Name="txtAccountNumber" Grid.Row="1" Grid.Column="1" IsReadOnly="True" />
+        <TextBox Name="txtName" Grid.Row="2" Grid.Column="1" IsReadOnly="True" />
+        
+        <dxg:GridControl DataSource="{Binding}" Name="grdCustomers" Grid.Row="3" Grid.ColumnSpan="4" Margin="5,5,5,5">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="CustomerGroup.SalesArea.Division.Code" Header="Division Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="CustomerGroup.SalesArea.Division.Name" Header="Division Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="CustomerGroup.Code" Header="Customer Group Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="CustomerGroup.Name" Header="Customer Group Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="AccountNumber" ReadOnly="True" />
+                <dxg:GridColumn FieldName="Name" Header="Store Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="CustomerGroup.SalesArea.SalesOrganization.Name" Header="Sales Organization" ReadOnly="True" />
+                <dxg:GridColumn FieldName="CustomerGroup.SalesArea.DistributionChannel.Name" Header="Distribution Channel" ReadOnly="False" />
+                <dxg:GridColumn Header="Selected">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton GroupName="Selected" VerticalAlignment="Center" HorizontalAlignment="Center" Click="RadioButton_Click" />
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView ShowAutoFilterRow="True" AutoWidth="True" AllowEditing="False" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+        
+        <Grid Grid.Row="5" Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Name="btnReplace" Content="Replace" Grid.Column="0" Margin="5,5,5,5" Click="btnReplace_Click" />
+            <Button Name="btnClose" Content="Close" Grid.Column="1" Margin="5,5,5,5" Click="btnClose_Click" />
+        </Grid>
+        
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

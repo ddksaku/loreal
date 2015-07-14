@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LorealOptimiseUnitTest</RootNamespace>
+    <AssemblyName>LorealOptimiseUnitTest</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>GlobalizationRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Libs\DevExpress.Data.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.3.9345, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="53\AllocationCalculation.cs" />
+    <Compile Include="53\AllocationLogicTest53_28.cs" />
+    <Compile Include="53\AllocationLogicTest53_09.cs" />
+    <Compile Include="55\AllocationLogisTest55_06.cs" />
+    <Compile Include="55\AllocationLogisTest55_07.cs" />
+    <Compile Include="55\AllocationLogisTest55_08.cs" />
+    <Compile Include="55\AllocationLogisTest55_09.cs" />
+    <Compile Include="55\AllocationLogisTest55_10.cs" />
+    <Compile Include="55\AllocationLogisTest55_11.cs" />
+    <Compile Include="55\AllocationLogisTest55_13.cs" />
+    <Compile Include="55\AllocationLogisTest55_14.cs" />
+    <Compile Include="55\AllocationLogisTest55_15.cs" />
+    <Compile Include="55\AllocationLogisTest55_16.cs" />
+    <Compile Include="55\AllocationLogisTest55_18.cs" />
+    <Compile Include="55\AllocationLogisTest55_19.cs" />
+    <Compile Include="55\AllocationLogisTest55_24.cs" />
+    <Compile Include="55\AllocationLogisTest55_25.cs" />
+    <Compile Include="55\AllocationLogisTest55_27.cs" />
+    <Compile Include="55\AllocationLogisTest55_28.cs" />
+    <Compile Include="55\AllocationLogisTest55_28_fullDB.cs" />
+    <Compile Include="56\AllocationLogicTest56_09.cs" />
+    <Compile Include="53\AllocationLogicTest53_07.cs" />
+    <Compile Include="53\AllocationLogicTest53_08.cs" />
+    <Compile Include="53\AllocationLogicTest53_11.cs" />
+    <Compile Include="53\AllocationLogicTest53_13.cs" />
+    <Compile Include="53\AllocationLogicTest53_14.cs" />
+    <Compile Include="53\AllocationLogicTest53_15.cs" />
+    <Compile Include="53\AllocationLogicTest53_16.cs" />
+    <Compile Include="53\AllocationLogicTest53_17.cs" />
+    <Compile Include="53\AllocationLogicTest53_19.cs" />
+    <Compile Include="53\AllocationLogicTest53_20.cs" />
+    <Compile Include="53\AllocationLogicTest53_21.cs" />
+    <Compile Include="53\AllocationLogicTest53_22.cs" />
+    <Compile Include="53\AllocationLogicTest53_23.cs" />
+    <Compile Include="53\AllocationLogicTest53_24.cs" />
+    <Compile Include="53\AllocationLogicTest53_26.cs" />
+    <Compile Include="53\AllocationLogicTest53_27.cs" />
+    <Compile Include="56\AllocationLogicTest56_10.cs" />
+    <Compile Include="56\AllocationLogicTest56_11.cs" />
+    <Compile Include="56\AllocationLogicTest56_12.cs" />
+    <Compile Include="56\AllocationLogicTest56_13.cs" />
+    <Compile Include="56\AllocationLogicTest56_14.cs" />
+    <Compile Include="56\AllocationLogicTest56_15.cs" />
+    <Compile Include="56\AllocationLogicTest56_16.cs" />
+    <Compile Include="56\AllocationLogicTest56_17.cs" />
+    <Compile Include="56\AllocationLogicTest56_19.cs" />
+    <Compile Include="56\AllocationLogicTest56_20.cs" />
+    <Compile Include="56\AllocationLogicTest56_22.cs" />
+    <Compile Include="Calculation_tests\Calculate_Functions.cs" />
+    <Compile Include="Calculation_tests\Calculate_ProductDetailTotals.cs" />
+    <Compile Include="GeneralTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBase.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="UserTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DOC\C1 scen 53_reviewed.xlsx" />
+    <None Include="DOC\C1 scen 55_reviewed.xlsx" />
+    <None Include="DOC\C1 scen 56_reviewed.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LorealOptimiseBusiness\LorealOptimiseBusiness.csproj">
+      <Project>{B72D2439-8EA3-4349-9958-D8C3B0593DCB}</Project>
+      <Name>LorealOptimiseBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LorealOptimiseData\LorealOptimiseData.csproj">
+      <Project>{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}</Project>
+      <Name>LorealOptimiseData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

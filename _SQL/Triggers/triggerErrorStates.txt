@@ -1,0 +1,58 @@
+Trigger errors states
+=====================
+
+
+Er #| Table 				    | Trigger														 | Specification
+--------------------------------------------------------------------------------------------------------------------
+1   |  AnimationProductDetail	| tr_AnimationProductDetail_AllocationQuantity					 | no. 108
+2   |  AnimationProductDetail	| tr_AnimationProductDetail_DivisibilityByMultiple				 | no. 109
+3   |  CustomerAllocation		| tr_CustomerAllocation_DivisibilityOfFixedAllocation			 | no. 175, no. 134
+4   |  CustomerGroupAllocation	| tr_CustomerGroupAllocation_DivisibilityOfFixedAllocation		 | no. 175
+5   |  CustomerAllocation		| tr_CustomerAllocation_CheckFixedAgainstAllocationQuantity		 | no. 174
+6   |  CustomerGroupAllocation	| tr_CustomerGroupAllocation_CheckFixedAgainstAllocationQuantity | no. 174, no. 129
+7   |  CustomerGroupAllocation	| tr_CustomerGroupAllocation_CheckFixedAgainstCapacity			 | no. 130
+8   |  CustomerAllocation		| tr_CustomerAllocation_CheckFixedAgainstCapacity				 | no. 130
+9   |  CustomerAllocation		| tr_CustomerAllocation_CheckAgainstGroupFixed					 | no. 131
+-   |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 190  NOT USED
+10  |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 191  NOT USED
+11  |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 191a NOT USED
+12  |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 191b NOT USED
+13  |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 192b NOT USED
+-   |  Multiple					| tr_Multiple_MultipleChanged									 | no. 95, no. 358a
+-   |  Customer					| tr_Customer_NewCustomer										 | no. 235
+14  |  Animation				| tr_Animation_StatusChangedDummy								 | no. 94
+-   |  Animation				| tr_Animation_StatusChangedDraft								 | no. 141a
+-	|  Customer					| tr_Customer_ClosedCustomer									 | no. 358c
+-   |  Product					| tr_Product_Dead												 | no. 358e
+-	|  AnimationProduct			| tr_AnimationProduct_AllocationLogicChanged					 | no. 358f
+-	|  CustomerCapacity			| tr_CustomerCapacity_CapacityChanged							 | no. 358g
+-	|  AnimationProductDetail   | tr_AnimationProductDetail_AllocationQuantityAlert				 | no. 358h
+-   |  AnimationProduct         | tr_AnimationProduct_New										 | --
+-   |  Sale						| tr_Sales_CountCustomerSale									 | --
+15  |  CustomerAllocation		| tr_CustomerAllocation_RetailOrFixedOnly						 |
+16  |  CustomerGroupAllocation  | tr_CustomerGroupAllocation_RetailOrFixedOnly					 |
+17  |  AnimationProductDetail	| tr_AnimationProductDetail_CheckQuantityAgainstSystemFixed		 |
+18  |  AnimationProductDetail   | tr_AnimationProductDetail_CheckQuantityAgainstCustomerFixed    |
+-   |  AnimationType			| tr_AnimationType_New											 | --
+-   |  Priority					| tr_Priority_New												 | --
+-	|  ItemType					| tr_ItemType_New												 | --
+19  |  CustomerGroupAllocation  | tr_CustomerGroupAllocation_CheckFixedAgainstGroupCapacity		 | --
+20  |  CustomerAllocation		| tr_CustomerAllocation_CheckFixedAgainstCustomerCapacity		 | --
+21  |  CustomerAllocation       | tr_CustomerAllocation_CheckSumAgainstGroupFixed			     | --
+22  |  CustomerAllocation       | tr_CustomerAllocation_CheckSumAgainstGroupFixed			     | --
+23  |  CustomerGroupAllocation	| tr_CustomerGroupAllocation_CheckFixedAgainstCustomerFixedSum
+24  |  Multiple					| tr_multiple_update_checkDuplicity
+25  |  CustomerAllocation       | tr_customerAllocation_avoidDuplicity
+26  |  CustomerCapacity			| tr_CustomerCapacity_CapacityDecreased							 | no. 192
+27  |  Animation				| tr_animation_animationTypeChange
+28  |  AnimationProduct			| tr_animationProduct_itemType
+29  |  CustomerGroupItemType	| tr_CustomerGroupItemType
+30  |  AnimationProduct			| tr_animationProduct_multipleChange
+31  |  AnimationCustomeGroup    | tr_AnimationGroupCheckGroupDuplicity
+32  |  AnimationProduct			| tr_Multiple_ValueChanged										 | divisibility of allocation quantity
+33  |  AnimationProduct			| tr_Multiple_ValueChanged										 | divisibility of group fixed
+34  |  AnimationProduct			| tr_Multiple_ValueChanged										 | divisibility of customer fixed
+35  |  AnimationProduct			| tr_AnimationProduct_DivisibilityOfWarehouseMultipleByNormalMultiple
+36  |  CustomerCategory			| tr_Customer_CategoryChanged					 
+37  |  Customer					| tr_Customer_ExcludeFromSysten
+38  |  CustomerBrandExclusion   | tr_CustomerBrandExclusion_Excluded

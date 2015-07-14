@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="LorealOptimiseGui.Controls.AdministrationTabs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="clr-namespace:LorealOptimiseGui.Lists">
+    <UserControl.Resources>
+        <Style TargetType="TabItem">
+            <!--<Setter Property="FontSize" Value="14"></Setter>-->
+        </Style>
+        <Style TargetType="TabControl">
+
+        </Style>
+
+    </UserControl.Resources>
+    <Grid Name="grdMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:EventLogs x:Name="ucEventLogs"></uc:EventLogs>    
+
+        <uc:AuditAlerts x:Name="ucAuditAlerts"></uc:AuditAlerts>
+        
+        <uc:Products Grid.Row="1" x:Name="ucProducts"></uc:Products>
+        
+        <uc:BrandAxes x:Name="ucBrandAxes"></uc:BrandAxes>
+        
+        <uc:Signatures x:Name="ucSignatures"></uc:Signatures>
+        
+        <uc:AnimationTypes x:Name="ucAnimationTypes"></uc:AnimationTypes>
+        
+        <uc:ItemGroups x:Name="ucItemGroups" />
+        
+        <uc:ItemTypes x:Name="ucItemTypes" />
+        
+        <uc:RetailerTypes x:Name="ucRetailerTypes" />
+        
+        <uc:OrderTypes x:Name="ucOrderTypes" />
+        
+        <uc:SalesDrives x:Name="ucSalesDrives" />
+        
+        <uc:Categories x:Name="ucCategories" />
+        
+        <uc:Priorities x:Name="ucPriorities" />
+        
+        <uc:Divisions x:Name="ucDivisions" />
+        
+        <uc:DistributionChannels x:Name="ucDistributionChannels" />
+        
+        <uc:SalesOrganizations x:Name="ucSalesOrganizations" />
+        
+        <uc:SalesAreas x:Name="ucSalesAreas" />
+        
+        <uc:ApplicationSettings x:Name="ucApplicationSettings" />
+        
+        <uc:HistoryLogs x:Name="ucHistoryLogs" />
+        
+        <uc:Users x:Name="ucUsers" />
+        
+        <uc:UserRoles x:Name="ucUsersInRole" />
+    
+        <uc:CustomerGroupsItemTypes x:Name="ucCustomerGroupItemTypes" />
+    
+        <uc:CustomerGroups x:Name="ucCustomerGroups" />
+            
+        <uc:SystemMessages x:Name="ucSystemMessages" />
+    </Grid>
+</UserControl>

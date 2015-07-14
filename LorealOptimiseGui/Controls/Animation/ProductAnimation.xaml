@@ -1,0 +1,284 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.ProductAnimation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors;assembly=DevExpress.Xpf.Core.v11.1"                       
+    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"                                   
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:controls="clr-namespace:LorealOptimiseGui.Controls"                                   
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui"
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <Control.Resources>
+        <Style x:Key="HighlightRowStyle" BasedOn="{StaticResource {dxgt:GridRowThemeKey ResourceKey=RowStyle}}" TargetType="{x:Type dxg:GridRowContent}">
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding Path=DataContext.IsProductManual}" Value="Manual" />
+                        <!--<Condition Binding="{Binding IsSelected}" Value="False" />-->
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="Background" Value="LightGreen" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Control.Resources>
+
+    <Grid VerticalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" /> 
+        </Grid.ColumnDefinitions>
+        <Grid Name="buttons">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnCreateProduct" Content="Create a new dummy product" Click="btnCreateProduct_Click" HorizontalAlignment="Left" Margin="2"></Button>
+                <Button Name="btnViewProducts" Content="View all products" Click="btnViewProducts_Click" HorizontalAlignment="Left" Margin="2"></Button>
+            </StackPanel>
+        </Grid>
+        <dxe:ComboBoxEdit Name="cboView" Width="100" Margin="5" Grid.Column="1" HorizontalAlignment="Right" SelectedIndex="0">
+            <dxe:ComboBoxEditItem>All</dxe:ComboBoxEditItem>
+            <dxe:ComboBoxEditItem>Marketing View</dxe:ComboBoxEditItem>
+            <dxe:ComboBoxEditItem>Logistics View</dxe:ComboBoxEditItem>
+            <dxe:ComboBoxEditItem>Summary</dxe:ComboBoxEditItem>
+        </dxe:ComboBoxEdit>
+
+
+        <dxg:GridControl Name="grdProduct" Grid.Row="1" Grid.ColumnSpan="2" DataSource="{Binding Animation.ObservableProducts, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <dxg:GridControl.Resources>
+
+            </dxg:GridControl.Resources>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn VisibleIndex="1" FieldName="IDItemGroup" Header="Item Group" Fixed="Left" Name="clmItemGroup" Width="80">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" DisplayMember="Name" ValueMember="ID" x:Name="cboItemGroups" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn VisibleIndex="2" FieldName="MaterialCode" Header="Material Code" Name="clmMaterialCode" Fixed="Left" Width="100">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboMaterialCodes"></Settings:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn VisibleIndex="3" FieldName="Description" Header="Description" Name="clmProductDescription" Width="100" Fixed="Left" BestFitMode="Smart" BestFitArea="Rows" BestFitMaxRowCount="25">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboDescriptions"></Settings:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn VisibleIndex="4" FieldName="SortOrder" Header="Sort Order" Name="clmSortOrder" Fixed="Left" Width="70">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Product.InternationalCode" Header="International Code" Name="clmInternationCode" ReadOnly="True" Width="100">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="BDCBookNumber" Name="clmBDC" Header="BDC" Width="55">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Product.EAN" Header="EAN" ReadOnly="True" Name="clmEan" Width="100">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Product.Status" Header="Status" ReadOnly="True" Name="clmStatus" Width="80">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="IsProductManual" Width="80" Header="Source" ReadOnly="True" Name="clmSource" UnboundType="String" UnboundExpression="Iif([Product.Manual],'Manual','SAP')">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="ForOrdering" Header="For Ordering?" ReadOnly="True" Name="clmForOrdering" Width="80">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="IDItemType" Header="Allocate by Item Type" Name="clmItemType">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" x:Name="cboItemTypes" DisplayMember="Name" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="IDSignature" Name="clmSignature" Header="Allocate by Signature">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboSignature" DisplayMember="Name" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="IDBrandAxe" Name="clmBrandAxe" Header="Allocate by Brand/Axe">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboBrandAxes" DisplayMember="FullName" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.BrandAxeName}" Margin="3" TextWrapping="NoWrap" />
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="IDCategory" Name="clmCategory" Header="Allocate by Store Category">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboCategories" DisplayMember="Name" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>                   
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="OnCAS" Name="clmOnCas" Width="80" Header="On CAS?">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:CheckEditSettings></Settings:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmNormalMultiple" FieldName="IDMultipleNormal" Width="80" Header="Normal Multiple" ColumnFilterMode="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboNormalMultiple" DisplayMember="ValueString" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.NormalMultiple}" Margin="3" TextWrapping="NoWrap" />
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmWarehouseMultiple" FieldName="IDMultipleWarehouse" Width="90" Header="Warehouse Multiple" ColumnFilterMode="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboWarehouseMultiple" DisplayMember="ValueString" ValueMember="ID" />
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.WarehouseMultiple}" Margin="3" TextWrapping="NoWrap" />
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalCapacity" FieldName="TotalCapacity" ReadOnly="True" Width="90" Header="Total Capacity">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>                    
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalBDCQuantity" FieldName="TotalBDCQuantity" ReadOnly="True" Width="90" Header="Total BDC Quantity">
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalForecast" FieldName="TotalForecastQuantity" ReadOnly="True" Width="100" Header="Total Forecast Procurement Quantity">
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalAllocation" FieldName="TotalAllocationQuantity" ReadOnly="True" Width="110" Header="Total Allocation Quantity Available">
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmAllocationQuantityUK" ReadOnly="True" FieldName="AllocationQuantityUK" Width="90" Header="Allocation Quantity UK">
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmAllocationQuantityROI" ReadOnly="True" FieldName="AllocationQuantityROI" Width="90" Header="Allocation Quantity ROI">
+
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalCostValue" FieldName="TotalCostValue" ReadOnly="True" Width="80" Header="Total Cost Value">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings DisplayFormat="N0" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmUKList" ReadOnly="True" FieldName="UKListPrice" Width="55" Header="UK List">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings DisplayFormat="N2" Mask="N2" MaskType="Numeric" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmROIList" ReadOnly="True" FieldName="ROIListPrice" Width="60" Header="ROI List">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings DisplayFormat="N2" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmUKRrp" ReadOnly="True" FieldName="UKRrp" Width="60" Header="UK RRP">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings DisplayFormat="N2" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmROIRrp" ReadOnly="True" FieldName="ROIRrp" Width="60" Header="ROI RRP">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings DisplayFormat="N2" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMarketingComments" FieldName="MarketingComments" Width="100" Header="Marketing Comments">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:MemoEditSettings ShowIcon="False" ShowTooltipForTrimmedText="True"></Settings:MemoEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Product.ProcurementType" ReadOnly="True" Name="clmProcurementType" Header="Procurement Type" Width="95">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="ConfirmedMadMonthString" Name="clmMadMonth" Header="Confirmed MAD Month" Width="95">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings AutoComplete="True" IsTextEditable="True" x:Name="cboMadMonth"></Settings:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="StockRisk" Name="clmStockRisk" Header="Stock Risk" Width="70">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:CheckEditSettings></Settings:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="DeliveryRisk" Name="clmDeliveryRisk" Header="Delivery Risk" Width="70">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:CheckEditSettings></Settings:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmActiveAnimations" FieldName="ActiveAnimations" ReadOnly="True" Header="Active Animations" Width="85">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                    <!--<TextBlock Text="Active Animations"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmDuplicateProduct" ReadOnly="True" FieldName="DuplicateProduct" Header="Duplicate Product" Width="80">
+                    <!--<TextBlock Text="Duplicate Product"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmTotalAnimationQuantity" ReadOnly="True" FieldName="TotalAnimationQuantity" Header="Total Animation Quantity" Width="90">
+                    <!--<TextBlock Text="Total Animation Quantity"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmInTransit" ReadOnly="True" FieldName="Product.InTransit" Header="In Transit" Width="70">
+                    <!--<TextBlock Text="In Transit"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmConfirmedQuantity" ReadOnly="True" FieldName="Product.ConfirmedQuantity" Header="Confirmed Quantity" Width="85">
+                    <!--<TextBlock Text="Confirmed Quantity"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmReliquat" ReadOnly="True" FieldName="Product.Reliquat" Header="Reliquat" Width="70">
+                    <!--<TextBlock Text="Reliquat"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth1" ReadOnly="True" FieldName="Product.Month" Header="Current Month" Width="80">
+                    <!--<TextBlock Text="Current Month"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth2" ReadOnly="True" FieldName="Product.Month1" Header="Month 1" Width="80">
+                    <!--<TextBlock Text="Month 1"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth3" ReadOnly="True" FieldName="Product.Month2" Header="Month 2" Width="80">
+                    <!--<TextBlock Text="Month 2"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth4" ReadOnly="True" FieldName="Product.Month3" Header="Month 3" Width="80">
+                    <!--<TextBlock Text="Month 3"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth5" ReadOnly="True" FieldName="Product.Month4" Header="Month 4" Width="80">
+                    <!--<TextBlock Text="Month 4"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth6" ReadOnly="True" FieldName="Product.Month5" Header="Month 5" Width="80">
+                    <!--<TextBlock Text="Month 5"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth7" ReadOnly="True" FieldName="Product.Month6" Header="Month 6" Width="80">
+                    <!--<TextBlock Text="Month 6"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth8" ReadOnly="True" FieldName="Product.Month7" Header="Month 7" Width="80">
+                    <!--<TextBlock Text="Month 7"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth9" ReadOnly="True" FieldName="Product.Month8" Header="Month 8" Width="80">
+                    <!--<TextBlock Text="Month 8"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth10" ReadOnly="True" FieldName="Product.Month9" Header="Month 9" Width="80">
+                    <!--<TextBlock Text="Month 9"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth11" ReadOnly="True" FieldName="Product.Month10" Header="Month 10" Width="80">
+                    <!--<TextBlock Text="Month 10"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMonth12" ReadOnly="True" FieldName="Product.Month11" Header="Month 11" Width="80">
+                    <!--<TextBlock Text="Month 11"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmRecievedToDate" ReadOnly="True" FieldName="ReceivedToDate" Header="Received to Date" Width="80">
+                    <!--<TextBlock Text="Received to Date"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmStock" ReadOnly="True" FieldName="Product.Stock" Header="Stock" Width="60">
+                    <!--<TextBlock Text="Stock"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmPipe" ReadOnly="True" FieldName="Product.Pipe" Header="Pipe" Width="60">
+                    <!--<TextBlock Text="Pipe"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmStockLessPipe" ReadOnly="True" FieldName="Product.StockLessPipe" Header="Stock Less Pipe" Width="80">
+                    <!--<TextBlock Text="Stock Less Pipe"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="LogisticsComments" Name="clmLogisticsComments" Header="Logistics Comments">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:MemoEditSettings ShowIcon="False" ShowTooltipForTrimmedText="True"></Settings:MemoEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                    <!--<TextBlock Text="Logistics Comments"></TextBlock>-->
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmAllocationQuantity" FieldName="AllocationQuantity" ReadOnly="True" Header="Allocation Quantity" Width="80">
+                    <!--<TextBlock Text="Allocation Quantity"></TextBlock>-->
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView RowStyle="{StaticResource HighlightRowStyle}" FocusedRow="{Binding SelectedAnimationProduct, Mode=TwoWay}" NewItemRowPosition="Top" CellValueChanged="TableView_CellValueChanged" InitNewRow="TableView_InitNewRow" ValidateRow="TableView_ValidateRow" CellValueChanging="TableView_CellValueChanging" RowCanceled="TableView_RowCanceled" ShownEditor="TableView_ShownEditor" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>        
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

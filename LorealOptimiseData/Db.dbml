@@ -1,0 +1,882 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LorealOptimise" Class="DbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=dev8;Initial Catalog=LorealOptimise;User ID=sa" SettingsObjectName="LorealOptimiseData.Properties.Settings" SettingsPropertyName="LorealOptimiseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AnimationType" Member="AnimationTypes">
+    <Type Name="AnimationType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="AnimationType_CustomerCapacity" Member="CustomerCapacities" ThisKey="ID" OtherKey="IDAnimationType" Type="CustomerCapacity" />
+      <Association Name="AnimationType_Animation" Member="Animations" ThisKey="ID" OtherKey="IDAnimationType" Type="Animation" />
+      <Association Name="Division_AnimationType" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuditAlert" Member="AuditAlerts">
+    <Type Name="AuditAlert">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AlertType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AlertDescription" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="OriginalValue" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NewValue" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Processed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Association Name="Division_AuditAlert" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BrandAxe" Member="BrandAxes">
+    <Type Name="BrandAxe">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDSignature" Storage="_IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Brand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="BrandAxe_CustomerBrandExclusion" Member="CustomerBrandExclusions" ThisKey="ID" OtherKey="IDBrandAxe" Type="CustomerBrandExclusion" />
+      <Association Name="BrandAxe_Sale" Member="Sales" ThisKey="ID" OtherKey="IDBrandAxe" Type="Sale" />
+      <Association Name="BrandAxe_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDBrandAxe" Type="AnimationProduct" />
+      <Association Name="Signature_BrandAxe" Member="Signature" ThisKey="IDSignature" OtherKey="ID" Type="Signature" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Category" Member="Categories">
+    <Type Name="Category">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="Category_CustomerCategory" Member="CustomerCategories" ThisKey="ID" OtherKey="IDCategory" Type="CustomerCategory" />
+      <Association Name="Category_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDCategory" Type="AnimationProduct" />
+      <Association Name="Division_Category" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerBrandExclusion" Member="CustomerBrandExclusions">
+    <Type Name="CustomerBrandExclusion">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDBrandAxe" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Excluded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="BrandAxe_CustomerBrandExclusion" Member="BrandAxe" ThisKey="IDBrandAxe" OtherKey="ID" Type="BrandAxe" IsForeignKey="true" />
+      <Association Name="Customer_CustomerBrandExclusion" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerCapacity" Member="CustomerCapacities">
+    <Type Name="CustomerCapacity">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDAnimationType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDPriority" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDItemType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="AnimationType_CustomerCapacity" Member="AnimationType" ThisKey="IDAnimationType" OtherKey="ID" Type="AnimationType" IsForeignKey="true" />
+      <Association Name="ItemType_CustomerCapacity" Member="ItemType" ThisKey="IDItemType" OtherKey="ID" Type="ItemType" IsForeignKey="true" />
+      <Association Name="Priority_CustomerCapacity" Member="Priority" ThisKey="IDPriority" OtherKey="ID" Type="Priority" IsForeignKey="true" />
+      <Association Name="Customer_CustomerCapacity" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerCategory" Member="CustomerCategories">
+    <Type Name="CustomerCategory">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDCategory" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="Category_CustomerCategory" Member="Category" ThisKey="IDCategory" OtherKey="ID" Type="Category" IsForeignKey="true" />
+      <Association Name="Customer_CustomerCategory" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerGroupItemType" Member="CustomerGroupItemTypes">
+    <Type Name="CustomerGroupItemType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomerGroup" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDItemType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="WarehouseAllocation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IncludeInSAPOrders" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="ItemType_CustomerGroupItemType" Member="ItemType" ThisKey="IDItemType" OtherKey="ID" Type="ItemType" IsForeignKey="true" />
+      <Association Name="CustomerGroup_CustomerGroupItemType" Member="CustomerGroup" ThisKey="IDCustomerGroup" OtherKey="ID" Type="CustomerGroup" IsForeignKey="true" />
+      <Association Name="Customer_CustomerGroupItemType" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DistributionChannel" Member="DistributionChannels">
+    <Type Name="DistributionChannel">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="DistributionChannel_SalesArea" Member="SalesAreas" ThisKey="ID" OtherKey="IDDistributionChannel" Type="SalesArea" />
+      <Association Name="DistributionChannel_Animation" Member="Animations" ThisKey="ID" OtherKey="IDDistributionChannel_Order" Type="Animation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Division" Member="Divisions">
+    <Type Name="Division">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="AllocateByBrand" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AllocateByAxe" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Division_AnimationType" Member="AnimationTypes" ThisKey="ID" OtherKey="IDDivision" Type="AnimationType" />
+      <Association Name="Division_AuditAlert" Member="AuditAlerts" ThisKey="ID" OtherKey="IDDivision" Type="AuditAlert" />
+      <Association Name="Division_Category" Member="Categories" ThisKey="ID" OtherKey="IDDivision" Type="Category" />
+      <Association Name="Division_ItemGroup" Member="ItemGroups" ThisKey="ID" OtherKey="IDDivision" Type="ItemGroup" />
+      <Association Name="Division_ItemType" Member="ItemTypes" ThisKey="ID" OtherKey="IDDivision" Type="ItemType" />
+      <Association Name="Division_OrderType" Member="OrderTypes" ThisKey="ID" OtherKey="IDDivision" Type="OrderType" />
+      <Association Name="Division_Priority" Member="Priorities" ThisKey="ID" OtherKey="IDDivision" Type="Priority" />
+      <Association Name="Division_RetailerType" Member="RetailerTypes" ThisKey="ID" OtherKey="IDDivision" Type="RetailerType" />
+      <Association Name="Division_SalesDrive" Member="SalesDrives" ThisKey="ID" OtherKey="IDDivision" Type="SalesDrive" />
+      <Association Name="Division_Signature" Member="Signatures" ThisKey="ID" OtherKey="IDDivision" Type="Signature" />
+      <Association Name="Division_UserRole" Member="UserRoles" ThisKey="ID" OtherKey="IDDivision" Type="UserRole" />
+      <Association Name="Division_SalesArea" Member="SalesAreas" ThisKey="ID" OtherKey="IDDivision" Type="SalesArea" />
+      <Association Name="Division_ApplicationSetting" Member="ApplicationSettings" ThisKey="ID" OtherKey="IDDivision" Type="ApplicationSetting" />
+      <Association Name="Division_SalesEmployee" Member="SalesEmployees" ThisKey="ID" OtherKey="IDDivision" Type="SalesEmployee" />
+      <Association Name="Division_Product" Member="Products" ThisKey="ID" OtherKey="IDDivision" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EventLog" Member="EventLogs">
+    <Type Name="EventLog">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[IDEntity]" Member="IDEntity" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistoryLog" Member="HistoryLogs">
+    <Type Name="HistoryLog">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FieldName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="KeyValue" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="TypeOfUpdate" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NewValue" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="OldValue" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemGroup" Member="ItemGroups">
+    <Type Name="ItemGroup">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="ItemGroup_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDItemGroup" Type="AnimationProduct" />
+      <Association Name="Division_ItemGroup" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemType" Member="ItemTypes">
+    <Type Name="ItemType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInSAPOrders" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="RRPAvailable" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="ItemType_CustomerCapacity" Member="CustomerCapacities" ThisKey="ID" OtherKey="IDItemType" Type="CustomerCapacity" />
+      <Association Name="ItemType_CustomerGroupItemType" Member="CustomerGroupItemTypes" ThisKey="ID" OtherKey="IDItemType" Type="CustomerGroupItemType" />
+      <Association Name="ItemType_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDItemType" Type="AnimationProduct" />
+      <Association Name="Division_ItemType" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Multiple" Member="Multiples">
+    <Type Name="Multiple">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="Multiple_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDMultipleNormal" Type="AnimationProduct" />
+      <Association Name="Multiple_AnimationProduct1" Member="AnimationProducts1" ThisKey="ID" OtherKey="IDMultipleWarehouse" Type="AnimationProduct" />
+      <Association Name="Product_Multiple" Member="Product" ThisKey="IDProduct" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderType" Member="OrderTypes">
+    <Type Name="OrderType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="OrderType_Animation" Member="Animations" ThisKey="ID" OtherKey="IDOrderType_Order" Type="Animation" />
+      <Association Name="Division_OrderType" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Priority" Member="Priorities">
+    <Type Name="Priority">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="Priority_CustomerCapacity" Member="CustomerCapacities" ThisKey="ID" OtherKey="IDPriority" Type="CustomerCapacity" />
+      <Association Name="Priority_Animation" Member="Animations" ThisKey="ID" OtherKey="IDPriority" Type="Animation" />
+      <Association Name="Division_Priority" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductConfirmed" Member="ProductConfirmeds">
+    <Type Name="ProductConfirmed">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Reliquat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Current]" Member="Current" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month3" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month4" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month5" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month6" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month7" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month8" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month9" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month10" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month11" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="Product_ProductConfirmed" Member="Product" ThisKey="IDProduct" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductReceived" Member="ProductReceiveds">
+    <Type Name="ProductReceived">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Month" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="Product_ProductReceived" Member="Product" ThisKey="IDProduct" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RetailerType" Member="RetailerTypes">
+    <Type Name="RetailerType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="[Default]" Member="Default" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="RetailerType_AnimationCustomerGroup" Member="AnimationCustomerGroups" ThisKey="ID" OtherKey="IDRetailerType" Type="AnimationCustomerGroup" />
+      <Association Name="Division_RetailerType" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Role_UserRole" Member="UserRoles" ThisKey="ID" OtherKey="IDRole" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sale" Member="Sales">
+    <Type Name="Sale">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDBrandAxe" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="EPOSValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="CaCatValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ManualValue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IDCustomer_Benchmark" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="BrandAxe_Sale" Member="BrandAxe" ThisKey="IDBrandAxe" OtherKey="ID" Type="BrandAxe" IsForeignKey="true" />
+      <Association Name="Customer_Sale" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+      <Association Name="Customer_Sale1" Member="Customer1" ThisKey="IDCustomer_Benchmark" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalesDrive" Member="SalesDrives">
+    <Type Name="SalesDrive">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Year" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="SalesDrive_Animation" Member="Animations" ThisKey="ID" OtherKey="IDSalesDrive" Type="Animation" />
+      <Association Name="Division_SalesDrive" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalesOrganization" Member="SalesOrganizations">
+    <Type Name="SalesOrganization">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="SalesOrganization_SalesArea" Member="SalesAreas" ThisKey="ID" OtherKey="IDSalesOrganization" Type="SalesArea" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Signature" Member="Signatures">
+    <Type Name="Signature">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Signature_BrandAxe" Member="BrandAxes" ThisKey="ID" OtherKey="IDSignature" Type="BrandAxe" />
+      <Association Name="Signature_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDSignature" Type="AnimationProduct" />
+      <Association Name="Division_Signature" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LoginName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Association Name="User_UserRole" Member="UserRoles" ThisKey="ID" OtherKey="IDUser" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRole" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDRole" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDUser" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Division_UserRole" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+      <Association Name="Role_UserRole" Member="Role" ThisKey="IDRole" OtherKey="ID" Type="Role" IsForeignKey="true" />
+      <Association Name="User_UserRole" Member="User" ThisKey="IDUser" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalesArea" Member="SalesAreas">
+    <Type Name="SalesArea">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDistributionChannel" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDSalesOrganization" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="RetailMultiplier" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RRPToListPriceRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="SalesArea_CustomerGroup" Member="CustomerGroups" ThisKey="ID" OtherKey="IDSalesArea" Type="CustomerGroup" />
+      <Association Name="SalesArea_AnimationProductDetail" Member="AnimationProductDetails" ThisKey="ID" OtherKey="IDSalesArea" Type="AnimationProductDetail" />
+      <Association Name="SalesArea_Customer" Member="Customers" ThisKey="ID" OtherKey="IDSalesArea_AllocationSalesArea" Type="Customer" />
+      <Association Name="SalesArea_Customer1" Member="Customers1" ThisKey="ID" OtherKey="IDSalesArea_Original" Type="Customer" />
+      <Association Name="DistributionChannel_SalesArea" Member="DistributionChannel" ThisKey="IDDistributionChannel" OtherKey="ID" Type="DistributionChannel" IsForeignKey="true" />
+      <Association Name="Division_SalesArea" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+      <Association Name="SalesOrganization_SalesArea" Member="SalesOrganization" ThisKey="IDSalesOrganization" OtherKey="ID" Type="SalesOrganization" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerGroup" Member="CustomerGroups">
+    <Type Name="CustomerGroup">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomisedName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CustomisedCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="IDSalesArea" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInSystem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ShowRBMInReporting" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInSAPOrders" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CountryCodeTemp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="CustomerGroup_CustomerGroupItemType" Member="CustomerGroupItemTypes" ThisKey="ID" OtherKey="IDCustomerGroup" Type="CustomerGroupItemType" />
+      <Association Name="CustomerGroup_CustomerGroupAllocation" Member="CustomerGroupAllocations" ThisKey="ID" OtherKey="IDCustomerGroup" Type="CustomerGroupAllocation" />
+      <Association Name="CustomerGroup_Customer" Member="Customers" ThisKey="ID" OtherKey="IDCustomerGroup" Type="Customer" />
+      <Association Name="CustomerGroup_AnimationCustomerGroup" Member="AnimationCustomerGroups" ThisKey="ID" OtherKey="IDCustomerGroup" Type="AnimationCustomerGroup" />
+      <Association Name="SalesArea_CustomerGroup" Member="SalesArea" ThisKey="IDSalesArea" OtherKey="ID" Type="SalesArea" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnimationProductDetail" Member="AnimationProductDetails">
+    <Type Name="AnimationProductDetail">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnimationProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDSalesArea" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RRP" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BDCQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ForecastProcQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AllocationQuantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MarketingComments" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="AnimationProductDetail_CustomerGroupAllocation" Member="CustomerGroupAllocations" ThisKey="ID" OtherKey="IDAnimationProductDetail" Type="CustomerGroupAllocation" />
+      <Association Name="AnimationProductDetail_CustomerAllocation" Member="CustomerAllocations" ThisKey="ID" OtherKey="IDAnimationProductDetail" Type="CustomerAllocation" />
+      <Association Name="SalesArea_AnimationProductDetail" Member="SalesArea" ThisKey="IDSalesArea" OtherKey="ID" Type="SalesArea" IsForeignKey="true" />
+      <Association Name="AnimationProduct_AnimationProductDetail" Member="AnimationProduct" ThisKey="IDAnimationProduct" OtherKey="ID" Type="AnimationProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerGroupAllocation" Member="CustomerGroupAllocations">
+    <Type Name="CustomerGroupAllocation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomerGroup" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDAnimationProductDetail" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ManualFixedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetailUplift" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SystemFixedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CalculatedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="CustomerGroupAllocation_CustomerAllocation" Member="CustomerAllocations" ThisKey="ID" OtherKey="IDCustomerGroupAllocation" Type="CustomerAllocation" />
+      <Association Name="AnimationProductDetail_CustomerGroupAllocation" Member="AnimationProductDetail" ThisKey="IDAnimationProductDetail" OtherKey="ID" Type="AnimationProductDetail" IsForeignKey="true" />
+      <Association Name="CustomerGroup_CustomerGroupAllocation" Member="CustomerGroup" ThisKey="IDCustomerGroup" OtherKey="ID" Type="CustomerGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Version" Member="Versions">
+    <Type Name="Version">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnimation" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AnimationStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Animation_Version" Member="Animation" ThisKey="IDAnimation" OtherKey="ID" Type="Animation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnimationProduct" Member="AnimationProducts">
+    <Type Name="AnimationProduct">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnimation" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDItemGroup" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDItemType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="true" />
+      <Column Name="IDSignature" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="true" />
+      <Column Name="IDBrandAxe" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDCategory" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDMultipleNormal" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDMutlipleWarehouse" Member="IDMultipleWarehouse" Storage="_IDMutlipleWarehouse" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="BDCBookNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="OnCAS" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ConfirmedMADMonth" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StockRisk" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DeliveryRisk" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LogisticsComments" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="MarketingComments" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Column Name="SortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Association Name="AnimationProduct_AnimationProductDetail" Member="AnimationProductDetails" ThisKey="ID" OtherKey="IDAnimationProduct" Type="AnimationProductDetail" />
+      <Association Name="BrandAxe_AnimationProduct" Member="BrandAxe" ThisKey="IDBrandAxe" OtherKey="ID" Type="BrandAxe" IsForeignKey="true" />
+      <Association Name="Category_AnimationProduct" Member="Category" ThisKey="IDCategory" OtherKey="ID" Type="Category" IsForeignKey="true" />
+      <Association Name="ItemGroup_AnimationProduct" Member="ItemGroup" ThisKey="IDItemGroup" OtherKey="ID" Type="ItemGroup" IsForeignKey="true" />
+      <Association Name="ItemType_AnimationProduct" Member="ItemType" ThisKey="IDItemType" OtherKey="ID" Type="ItemType" IsForeignKey="true" />
+      <Association Name="Multiple_AnimationProduct" Member="Multiple" ThisKey="IDMultipleNormal" OtherKey="ID" Type="Multiple" IsForeignKey="true" />
+      <Association Name="Multiple_AnimationProduct1" Member="Multiple1" ThisKey="IDMultipleWarehouse" OtherKey="ID" Type="Multiple" IsForeignKey="true" />
+      <Association Name="Signature_AnimationProduct" Member="Signature" ThisKey="IDSignature" OtherKey="ID" Type="Signature" IsForeignKey="true" />
+      <Association Name="Animation_AnimationProduct" Member="Animation" ThisKey="IDAnimation" OtherKey="ID" Type="Animation" IsForeignKey="true" />
+      <Association Name="Product_AnimationProduct" Member="Product" ThisKey="IDProduct" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Animation" Member="Animations">
+    <Type Name="Animation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDSalesDrive" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDPriority" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDAnimationType" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDDistributionChannel_Order" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDOrderType_Order" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="SAPDespatchCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DefaultCustomerReference" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="RequestedDeliveryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OnCounterDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLVDeliveryDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLVComponentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateClosed" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DateSAPOrderCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateCalculated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Animation_Version" Member="Versions" ThisKey="ID" OtherKey="IDAnimation" Type="Version" />
+      <Association Name="Animation_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDAnimation" Type="AnimationProduct" />
+      <Association Name="Animation_AnimationCustomerGroup" Member="AnimationCustomerGroups" ThisKey="ID" OtherKey="IDAnimation" Type="AnimationCustomerGroup" />
+      <Association Name="AnimationType_Animation" Member="AnimationType" ThisKey="IDAnimationType" OtherKey="ID" Type="AnimationType" IsForeignKey="true" />
+      <Association Name="DistributionChannel_Animation" Member="DistributionChannel" ThisKey="IDDistributionChannel_Order" OtherKey="ID" Type="DistributionChannel" IsForeignKey="true" />
+      <Association Name="OrderType_Animation" Member="OrderType" ThisKey="IDOrderType_Order" OtherKey="ID" Type="OrderType" IsForeignKey="true" />
+      <Association Name="Priority_Animation" Member="Priority" ThisKey="IDPriority" OtherKey="ID" Type="Priority" IsForeignKey="true" />
+      <Association Name="SalesDrive_Animation" Member="SalesDrive" ThisKey="IDSalesDrive" OtherKey="ID" Type="SalesDrive" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SystemMessage" Member="SystemMessages">
+    <Type Name="SystemMessage">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MessageContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MessageDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ApplicationSettings" Member="ApplicationSettings">
+    <Type Name="ApplicationSetting">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SettingKey" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="SettingValue" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="Division_ApplicationSetting" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SalesEmployee" Member="SalesEmployees">
+    <Type Name="SalesEmployee">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeNumber" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="SalesEmployee_Customer" Member="Customers" ThisKey="ID" OtherKey="IDSalesEmployee" Type="Customer" />
+      <Association Name="Division_SalesEmployee" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.allocationLog" Member="allocationLogs">
+    <Type Name="allocationLog">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDAnimation" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LogID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LogText" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerAllocation" Member="CustomerAllocations">
+    <Type Name="CustomerAllocation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDAnimationProductDetail" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FixedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RetailUplift" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CalculatedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="CachedCapacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IDCustomerGroupAllocation" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="AnimationProductDetail_CustomerAllocation" Member="AnimationProductDetail" ThisKey="IDAnimationProductDetail" OtherKey="ID" Type="AnimationProductDetail" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="CustomerGroupAllocation_CustomerAllocation" Member="CustomerGroupAllocation" ThisKey="IDCustomerGroupAllocation" OtherKey="ID" Type="CustomerGroupAllocation" IsForeignKey="true" />
+      <Association Name="Customer_CustomerAllocation" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDSalesEmployee" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDCustomerGroup" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDSalesArea_AllocationSalesArea" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="IDSalesArea_Original" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" IsDelayLoaded="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInSystem" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" IsDelayLoaded="true" />
+      <Column Name="Deleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TotalSales" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_CustomerBrandExclusion" Member="CustomerBrandExclusions" ThisKey="ID" OtherKey="IDCustomer" Type="CustomerBrandExclusion" />
+      <Association Name="Customer_CustomerCapacity" Member="CustomerCapacities" ThisKey="ID" OtherKey="IDCustomer" Type="CustomerCapacity" />
+      <Association Name="Customer_CustomerCategory" Member="CustomerCategories" ThisKey="ID" OtherKey="IDCustomer" Type="CustomerCategory" />
+      <Association Name="Customer_CustomerGroupItemType" Member="CustomerGroupItemTypes" ThisKey="ID" OtherKey="IDCustomer" Type="CustomerGroupItemType" />
+      <Association Name="Customer_Sale" Member="Sales" ThisKey="ID" OtherKey="IDCustomer" Type="Sale" />
+      <Association Name="Customer_Sale1" Member="Sales1" ThisKey="ID" OtherKey="IDCustomer_Benchmark" Type="Sale" />
+      <Association Name="Customer_CustomerAllocation" Member="CustomerAllocations" ThisKey="ID" OtherKey="IDCustomer" Type="CustomerAllocation" />
+      <Association Name="CustomerGroup_Customer" Member="CustomerGroup" ThisKey="IDCustomerGroup" OtherKey="ID" Type="CustomerGroup" IsForeignKey="true" />
+      <Association Name="SalesArea_Customer" Member="SalesArea" ThisKey="IDSalesArea_AllocationSalesArea" OtherKey="ID" Type="SalesArea" IsForeignKey="true" />
+      <Association Name="SalesEmployee_Customer" Member="SalesEmployee" ThisKey="IDSalesEmployee" OtherKey="ID" Type="SalesEmployee" IsForeignKey="true" />
+      <Association Name="SalesArea_Customer1" Member="SalesArea1" ThisKey="IDSalesArea_Original" OtherKey="ID" Type="SalesArea" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AnimationCustomerGroup" Member="AnimationCustomerGroups">
+    <Type Name="AnimationCustomerGroup">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDAnimation" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDCustomerGroup" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IDRetailerType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="IncludeInAllocation" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OnCounterDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PLVDeliveryDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PLVComponentDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StockDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SAPDespatchCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="OverridenFlags" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Animation_AnimationCustomerGroup" Member="Animation" ThisKey="IDAnimation" OtherKey="ID" Type="Animation" IsForeignKey="true" />
+      <Association Name="CustomerGroup_AnimationCustomerGroup" Member="CustomerGroup" ThisKey="IDCustomerGroup" OtherKey="ID" Type="CustomerGroup" IsForeignKey="true" />
+      <Association Name="RetailerType_AnimationCustomerGroup" Member="RetailerType" ThisKey="IDRetailerType" OtherKey="ID" Type="RetailerType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IDDivision" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="MaterialCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="InternationalCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="EAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Manual" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ProcurementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CIV" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Stock" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StockLessPipe" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InTransit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="intID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="[Pipe]" Member="Pipe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_Multiple" Member="Multiples" ThisKey="ID" OtherKey="IDProduct" Type="Multiple" />
+      <Association Name="Product_ProductConfirmed" Member="ProductConfirmeds" ThisKey="ID" OtherKey="IDProduct" Type="ProductConfirmed" />
+      <Association Name="Product_ProductReceived" Member="ProductReceiveds" ThisKey="ID" OtherKey="IDProduct" Type="ProductReceived" />
+      <Association Name="Product_AnimationProduct" Member="AnimationProducts" ThisKey="ID" OtherKey="IDProduct" Type="AnimationProduct" />
+      <Association Name="Division_Product" Member="Division" ThisKey="IDDivision" OtherKey="ID" Type="Division" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Lockout" Member="Lockouts">
+    <Type Name="Lockout">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Start" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="[End]" Member="End" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.calculate_AllocationRemainder" Method="calculate_AllocationRemainder" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RoundWarehouseMultiple" Method="RoundWarehouseMultiple" IsComposable="true">
+    <Parameter Name="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="multipleNormal" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ListPriceROI" Method="calculate_ListPriceROI" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DivisionID" Parameter="divisionID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.calculate_ListPriceUK" Method="calculate_ListPriceUK" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="DivisionID" Parameter="divisionID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.calculate_MonthDelivery" Method="calculate_MonthDelivery" IsComposable="true">
+    <Parameter Name="productID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="monthNumber" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ProductConfirmed" Method="calculate_ProductConfirmed" IsComposable="true">
+    <Parameter Name="productID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ProductReceived" Method="calculate_ProductReceived" IsComposable="true">
+    <Parameter Name="AnimationProduct" Parameter="animationProduct" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_Reliquat" Method="calculate_Reliquat" IsComposable="true">
+    <Parameter Name="productID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalAllocation" Method="calculate_TotalAllocation" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalBDCQuantity" Method="calculate_TotalBDCQuantity" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalCIV" Method="calculate_TotalCIV" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="dbo.calculate_TotalForecastQuantity" Method="calculate_TotalForecastQuantity" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalsProductDetail" Method="calculate_TotalsProductDetail" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.countGroupCapacity" Method="countGroupCapacity" IsComposable="true">
+    <Parameter Name="animationProductDetailId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="groupId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RoundMultiple" Method="RoundMultiple" IsComposable="true">
+    <Parameter Name="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="multipleNormal" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ProductDetailTotals" Method="calculate_ProductDetailTotals" IsComposable="true">
+    <Parameter Name="AnimationProductDetail" Parameter="animationProductDetail" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalAllocationROI" Method="calculate_TotalAllocationROI" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDDivision" Parameter="iDDivision" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalAllocationUK" Method="calculate_TotalAllocationUK" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDDivision" Parameter="iDDivision" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_RRP_ROI" Method="calculate_RRP_ROI" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDDivision" Parameter="iDDivision" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_RRP_UK" Method="calculate_RRP_UK" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDDivision" Parameter="iDDivision" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ActiveAnimations" Method="calculate_ActiveAnimations" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalCapacity" Method="calculate_TotalCapacity" IsComposable="true">
+    <Parameter Name="AnimationProductID" Parameter="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_ProductDetailCustomerTotalCapacity" Method="calculate_ProductDetailCustomerTotalCapacity" IsComposable="true">
+    <Parameter Name="animationProductDetailID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="customerID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_createOrderExport" Method="up_createOrderExport">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_animationCheck" Method="up_animationCheck">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="countOfErrors" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="errorMsg" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CalculateTotals" Method="CalculateTotals">
+    <Parameter Name="AnimationProduct" Parameter="animationProduct" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="IDDivision" Parameter="iDDivision" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="TotalCapacity" Parameter="totalCapacity" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalBDCQuantity" Parameter="totalBDCQuantity" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalForecastQuantity" Parameter="totalForecastQuantity" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalAllocation" Parameter="totalAllocation" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalAllocationUK" Parameter="totalAllocationUK" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="TotalAllocationROI" Parameter="totalAllocationROI" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="RrpUK" Parameter="rrpUK" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="RrpROI" Parameter="rrpROI" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="ListPriceUK" Parameter="listPriceUK" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="ListPriceROI" Parameter="listPriceROI" Type="System.Double" DbType="Float" Direction="InOut" />
+    <Parameter Name="ProductRecieved" Parameter="productRecieved" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ActiveAnimations" Parameter="activeAnimations" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_orderExport" Method="up_orderExport" IsComposable="true">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="salesOrganizationCode" Type="System.String" DbType="NVarChar(255)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.up_createOrderExport" Method="up_createOrderExport1">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_GetRetailerType" Method="up_GetRetailerType">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="up_GetRetailerTypeResult">
+      <Column Name="IDRetailerType" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RetailerType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IDAnimationProduct" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CalculatedAllocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.calculate_TotalCapacityCustomerAllocation" Method="calculate_TotalCapacityCustomerAllocation" IsComposable="true">
+    <Parameter Name="customerAllocationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="getFromCache" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.calculate_TotalCapacityCustomerGroup" Method="calculate_TotalCapacityCustomerGroup" IsComposable="true">
+    <Parameter Name="customerGroupAllocationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="getFromCache" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_mergeProducts" Method="up_mergeProducts">
+    <Parameter Name="mergeIntoProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="mergedProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_generateCapacities" Method="up_generateCapacities">
+    <Parameter Name="animationType" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="itemTypeList" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="priority" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="customerList" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="capacity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="delete" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.countSale" Method="countSale" IsComposable="true">
+    <Parameter Name="customerId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="customerGroupId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="brandAxeId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="saleAreaAnimationId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="animationProductDetailId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="signatureId" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="customerRetailUplift" Type="System.Double" DbType="Float" />
+    <Parameter Name="getFromCache" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Double" />
+  </Function>
+  <Function Name="dbo.up_recreateAllocationsAnimationProduct" Method="up_recreateAllocationsAnimationProduct">
+    <Parameter Name="animationProductID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="withDeletion" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.up_recreateAllocationsAnimation" Method="up_recreateAllocationsAnimation">
+    <Parameter Name="animationID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="withDelete" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateLockouts" Method="updateLockouts">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.unlockCurrentLock" Method="unlockCurrentLock">
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

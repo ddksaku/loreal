@@ -1,0 +1,49 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.CustomerAllocation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui"
+    xmlns:Controls="clr-namespace:LorealOptimiseGui.Controls"                                   
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:dx="clr-namespace:DevExpress.Xpf.Data;assembly=DevExpress.Xpf.Grid.v11.1">
+    <Grid>
+        <dxg:GridControl DataSource="{Binding Allocations.CustomersAllocation}" Name="grdAllocation">
+            <dxg:GridControl.View>
+                <dxg:TableView CellStyle="{StaticResource CellNormalStyle}" NewItemRowPosition="None" ShowGroupedColumns="False" ShowGroupPanel="False" ShowTotalSummary="True" ShowingEditor="TableView_ShowingEditor" CellValueChanged="TableView_CellValueChanged" />
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Customer.Name" Header="Customers" Name="CustomerName" Fixed="Left" Width="260" ReadOnly="True">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Customer.AccountNumber" Header="Account Number" ReadOnly="True">
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="MaximumCapacity" Header="Maximum Capacity" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmFixedAllocation" FieldName="FixedAllocation" Header="Fixed Allocation">
+                    <dxg:GridColumn.EditSettings>
+                        <!--<Controls:NullableSpinEditSettings MinValue="0" IsFloatValue="False" />-->
+                        <Settings:SpinEditSettings AllowNullInput="True" MinValue="0" IsFloatValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmRetailUplift" FieldName="RetailUplift" Header="Retail Uplift">
+                    <dxg:GridColumn.EditSettings>
+                        <!--<Controls:NullableSpinEditSettings MinValue="0" />-->
+                        <Settings:SpinEditSettings AllowNullInput="True" MinValue="0" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="CalculatedAllocation" Header="Calculated Allocation" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem FieldName="MaximumCapacity" SummaryType="Sum" ShowInColumn="MaximumCapacity" DisplayFormat="0,0" />
+                <dxg:GridSummaryItem FieldName="FixedAllocation" SummaryType="Sum" ShowInColumn="FixedAllocation" DisplayFormat="0,0" />
+                <dxg:GridSummaryItem FieldName="CalculatedAllocation" SummaryType="Sum" ShowInColumn="CalculatedAllocation" DisplayFormat="0,0" />
+            </dxg:GridControl.TotalSummary>
+        </dxg:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

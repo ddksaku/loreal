@@ -1,0 +1,143 @@
+﻿<local:BaseListUserControl x:Class="LorealOptimiseGui.Lists.Sales"
+                           x:TypeArguments="Lists:SaleManager, LorealOptimiseData:Sale"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:Controls="clr-namespace:LorealOptimiseGui.Controls"                           
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness"
+    xmlns:Editors="clr-namespace:DevExpress.Xpf.Editors;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:dx="clr-namespace:DevExpress.Xpf.Data;assembly=DevExpress.Xpf.Grid.v11.1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Name="lblTitle" Content="Sales" Margin="2" HorizontalAlignment="Left" />	
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Label Content="Customer"></Label>
+                <Editors:TextEdit Width="140" Name="txtCustomerFilter" VerticalAlignment="Center" Margin="2" KeyDown="cboCustomerFilter_KeyDown" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Label Content="Brand/Axe" HorizontalAlignment="Right"></Label>
+                <Editors:ComboBoxEdit Width="120" Name="cboBrandAxeFilter" VerticalAlignment="Center" Margin="2" DisplayMember="FullNameWithSignature" ValueMember="ID" KeyDown="cboCustomerFilter_KeyDown" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="4">
+                <Label Content="Signature" HorizontalAlignment="Right"></Label>
+                <Editors:ComboBoxEdit Width="120" Name="cboSignatureFilter" VerticalAlignment="Center" Margin="2" DisplayMember="Name" ValueMember="ID" KeyDown="cboCustomerFilter_KeyDown" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="6">
+                <Label Content="Date From" HorizontalAlignment="Right"></Label>
+                <Editors:DateEdit Width="80" Name="startDateFilter" Margin="2" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="8">
+                <Label Content="Date To" HorizontalAlignment="Right"></Label>
+                <Editors:DateEdit Width="80" Name="endDateFilter" Margin="2" />
+            </StackPanel>
+            
+            <Button Grid.Column="10" Width="80" Content="Filter" Name="btnFilter" HorizontalAlignment="Right" Click="Button_Click" Height="25"></Button>
+        </Grid>
+        <dxg:GridControl Grid.Row="2" Grid.ColumnSpan="2" DataSource="{Binding}" x:Name="grdSales">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="RetailMultiplier" Header="Retail Multiplier" ReadOnly="True" Fixed="Left" Width="80" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.SalesOrganization.Code" Visible="False" Header="Sales Organisation Code" ReadOnly="True" Fixed="Left" Width="100" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.SalesOrganization.Name" Header="Sales Organisation Name" ReadOnly="True" Fixed="Left" Width="100" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.DistributionChannel.Code" Visible="False" Header="Distribution Channel Code" ReadOnly="True" Fixed="Left" Width="100" />
+                <dxg:GridColumn FieldName="Customer.SalesArea.DistributionChannel.Name" Header="Distribution Channel Name" ReadOnly="True" Fixed="Left" Width="100" />
+                <dxg:GridColumn FieldName="Customer.CustomerGroup.Code" Visible="False" Header="Customer Hierarchy 3 Code" ReadOnly="True" Fixed="Left" Width="100" />
+                <dxg:GridColumn FieldName="Customer.IDCustomerGroup" Header="Customer Hierarchy 3 Name" ReadOnly="True" Fixed="Left" Width="100" GroupInterval="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboCustomerGroup" DisplayMember="FullName" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Customer.AccountNumber" Header="Account Number" ReadOnly="True" Fixed="Left" Width="80" />
+                <dxg:GridColumn FieldName="IDCustomer" Header="Store Name" Fixed="Left" Width="80">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboCustomers" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="BrandAxe.Signature.Code" Header="Signature Code" Visible="False" ReadOnly="True" Width="80" />
+                <dxg:GridColumn FieldName="BrandAxe.Signature.Name" Header="Signature Name" ReadOnly="True" Width="80" />
+                <dxg:GridColumn FieldName="BrandAxe.Code" Header="Brand/Axe Code" ReadOnly="True" Width="100" />
+                <dxg:GridColumn FieldName="IDBrandAxe" Header="Brand/Axe Name" Width="100" GroupInterval="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboBrandAxes" DisplayMember="FullNameWithSignature" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Customer.SalesEmployee.Name" Header="RBM Name" ReadOnly="True" Width="80" />
+                <dxg:GridColumn FieldName="Customer1.AccountNumber" Header="Benchmark Store Code" ReadOnly="True" Width="100" />
+                <dxg:GridColumn FieldName="IDCustomer_Benchmark" Header="Benchmark Store Name" Width="100">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboBenchmarkCustomers" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="Date" Header="Month" Width="70" Fixed="Right">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings MaskType="DateTime" DisplayFormat="MM.yyyy" Mask="MM.yyyy" MaskUseAsDisplayFormat="True"></dxe:DateEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="ManualValue" Header="Manual" Width="70" Fixed="Right">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings DisplayFormat="n0" IsFloatValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="EPOSValue" Header="EPOS" ReadOnly="True" Width="60" Fixed="Right">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings AllowNullInput="True" DisplayFormat="n0" IsFloatValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="CaCatValue" Header="CaCat" ReadOnly="True" Width="60" Fixed="Right" Name="clmCacat">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings AllowNullInput="True" DisplayFormat="0,0.0" IsFloatValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn x:Name="colSalsType" FieldName="SalesType" Fixed="Right" Header="Sales Type" UnboundType="String" UnboundExpression="Iif(IsNull([ManualValue]) Or ([ManualValue] == 0), Iif(IsNull([EPOSValue]) Or ([EPOSValue] == 0), 'CaCat', 'EPOS') ,'Manual')" ReadOnly="True" Width="60" />
+                <dxg:GridColumn x:Name="colRetailSales" FieldName="RetailSales" Fixed="Right" Header="Retail Sales" UnboundType="Integer" UnboundExpression="Iif(IsNull([ManualValue]) Or ([ManualValue] == 0), Iif(IsNull([EPOSValue]) Or ([EPOSValue] == 0), [CaCatValue] * [RetailMultiplier], [EPOSValue]) ,[ManualValue])" ReadOnly="True" Width="60">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings AllowNullInput="True" DisplayFormat="n0" IsFloatValue="False" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem DisplayFormat="Total: {0:0,0}" FieldName="RetailSales" SummaryType="Sum" />
+                <dxg:GridSummaryItem FieldName="Capacity" DisplayFormat="Count: {0:0,0}" SummaryType="Count" ShowInColumn="Customer.SalesArea.SalesOrganization.Code" />
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.GroupSummary>
+                <dxg:GridSummaryItem FieldName="RetailSales" SummaryType="Count" DisplayFormat="Count: {0:0,0}" />
+                <dxg:GridSummaryItem FieldName="RetailSales" SummaryType="Sum" DisplayFormat="Total: {0:0,0}" />
+            </dxg:GridControl.GroupSummary>
+            <dxg:GridControl.View>
+                <dxg:TableView ShowTotalSummary="True" NewItemRowPosition="Top" ShowingEditor="TableView_ShowingEditor" CellValueChanged="TableView_CellValueChanged" RowCanceled="TableView_RowCanceled" InitNewRow="TableView_InitNewRow" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</local:BaseListUserControl>

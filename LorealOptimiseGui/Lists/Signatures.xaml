@@ -1,0 +1,37 @@
+﻿<local:BaseListUserControl x:Class="LorealOptimiseGui.Lists.Signatures"
+                           x:TypeArguments="Lists:SignatureManager, LorealOptimiseData:Signature"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Name="lblTitle" Content="Signatures" Margin="2" HorizontalAlignment="Left"></Label>
+	<Button Grid.Row="0" Grid.Column="1" Name="btnRefresh" Content="Refresh" Click="Button_Click"></Button>
+        <dxg:GridControl Grid.Row="1" Grid.ColumnSpan="2" DataSource="{Binding}" x:Name="grdSignatures">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="IDDivision" Header="Division">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboDivisions" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Name" />
+                <dxg:GridColumn FieldName="Code" Validate="colCode_Validate" />
+                <dxg:GridColumn FieldName="Manual" ReadOnly="True" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" NewItemRowPosition="Top" InitNewRow="TableView_InitNewRow" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</local:BaseListUserControl>

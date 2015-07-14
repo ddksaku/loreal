@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmR3ZD0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9EYXRhV2FyZWhvdXNlL0Rlc2lnbmVyLzEuMCI+DQogIDxFbmFibGVkPmZhbHNlPC9FbmFibGVkPg0KICA8UHJvamVjdE5hbWU+PC9Qcm9qZWN0TmFtZT4NCiAgPEF1eFBhdGg+PC9BdXhQYXRoPg0KICA8TG9jYWxQYXRoPjwvTG9jYWxQYXRoPg0KICA8UHJvdmlkZXI+PC9Qcm92aWRlcj4NCjwvU291cmNlQ29udHJvbEluZm8+</State>
+  <DataSources>
+    <ProjectItem>
+      <Name>LorealOptimise.rds</Name>
+      <FullPath>LorealOptimise.rds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <Reports>
+    <ProjectItem>
+      <Name>AllocationReport.rdl</Name>
+      <FullPath>AllocationReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AllocationReport_Header.rdl</Name>
+      <FullPath>AllocationReport_Header.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AlocationReport_backup.rdl</Name>
+      <FullPath>AlocationReport_backup.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AlocationReport_listed.rdl</Name>
+      <FullPath>AlocationReport_listed.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AnimationReport.rdl</Name>
+      <FullPath>AnimationReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AnimationReport_Deadlines.rdl</Name>
+      <FullPath>AnimationReport_Deadlines.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>AnimationReport_Header.rdl</Name>
+      <FullPath>AnimationReport_Header.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>CapacityReport.rdl</Name>
+      <FullPath>CapacityReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Report1.rdl</Name>
+      <FullPath>Report1.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>StoreAllocationReport.rdl</Name>
+      <FullPath>StoreAllocationReport.rdl</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>StoreAllocationReport.rdl_old</Name>
+      <FullPath>StoreAllocationReport.rdl_old</FullPath>
+    </ProjectItem>
+  </Reports>
+  <Configurations>
+    <Configuration>
+      <Name>Debug</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <TargetFolder>Report Project4</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>DebugLocal</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <TargetFolder>Report Project4</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+    <Configuration>
+      <Name>Production</Name>
+      <Platform>Win32</Platform>
+      <Options>
+        <TargetFolder>Report Project4</TargetFolder>
+        <TargetDataSourceFolder>Data Sources</TargetDataSourceFolder>
+      </Options>
+    </Configuration>
+  </Configurations>
+</Project>

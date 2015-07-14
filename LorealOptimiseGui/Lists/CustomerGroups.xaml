@@ -1,0 +1,88 @@
+﻿<local:BaseListUserControl x:Class="LorealOptimiseGui.Lists.CustomerGroups"
+                           x:TypeArguments="Lists:CustomerGroupManager, LorealOptimiseData:CustomerGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Name="lblTitle" Grid.Row="0" Margin="2" Content="Customer Groups" HorizontalAlignment="Left"></Label>
+	<Button Grid.Row="0" Grid.Column="1" Name="btnRefresh" Content="Refresh" Click="Button_Click"></Button>
+        <dxg:GridControl Grid.Row="1" Grid.ColumnSpan="2" DataSource="{Binding}" x:Name="grdCustomerGroups">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="SalesArea.SalesOrganization.Code" Header="Sales Organisation Code" ReadOnly="True" Width="110" />
+                <dxg:GridColumn FieldName="SalesArea.SalesOrganization.Name" Header="Sales Organisation Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="SalesArea.DistributionChannel.Code" Header="Distribution Channel Code" ReadOnly="True" Width="90" />
+                <dxg:GridColumn FieldName="SalesArea.DistributionChannel.Name" Header="Distribution Channel Name" ReadOnly="True" />
+                <dxg:GridColumn FieldName="SalesArea.Division.Code" Header="Division Code" ReadOnly="True" Width="60" />
+                <dxg:GridColumn FieldName="SalesArea.Division.Name" Header="Division Name" ReadOnly="True" />
+                <!--<dxg:GridColumn FieldName="SalesArea.Code" Header="Sales Area Code" ReadOnly="True"/>-->
+                <dxg:GridColumn FieldName="IDSalesArea" Header="Sales Area Name">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboSalesAreas" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                               
+                <dxg:GridColumn FieldName="Code" Width="70" />
+                <dxg:GridColumn FieldName="Name" />
+                <dxg:GridColumn FieldName="RetailSales" Header="Retail Sales" ReadOnly="True" Width="60">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings MaskType="Numeric" IsFloatValue="True"></dxe:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>                    
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="SortOrder" Width="50">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings MaskType="Numeric" IsFloatValue="False"></dxe:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn> 
+                <dxg:GridColumn FieldName="IncludeInSystem" Header="Include In System" Width="70">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings></dxe:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Manual" ReadOnly="True" Width="60" />
+
+                <dxg:GridColumn FieldName="ShowRBMInReporting" Header="Show RBM in reporting?">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings></dxe:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="IncludeInSAPOrders" Header="Include in SAP Order Extract">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings></dxe:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn Header="Operation" Name="colOperation">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Button x:Name="btnReplace" Content="Merge" Click="btnReplace_Click" Margin="3,3,3,3" Initialized="btnReplace_Initialized" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Data.Manual}" Value="False">
+                                    <Setter Property="Visibility" Value="Collapsed" TargetName="btnReplace" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" NewItemRowPosition="Top" ShowingEditor="TableView_ShowingEditor" InitNewRow="TableView_InitNewRow" CellValueChanged="TableView_CellValueChanged" RowCanceled="TableView_RowCanceled" PreviewKeyDown="TableView_PreviewKeyDown" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</local:BaseListUserControl>

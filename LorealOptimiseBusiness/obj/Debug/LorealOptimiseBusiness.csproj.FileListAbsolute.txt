@@ -1,0 +1,12 @@
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\obj\Debug\ResolveAssemblyReference.cache
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseBusiness.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseBusiness.pdb
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseData.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseShared.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\log4net.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseData.pdb
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\LorealOptimiseShared.pdb
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\obj\Debug\LorealOptimiseBusiness.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\obj\Debug\LorealOptimiseBusiness.pdb
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\DevExpress.Data.v11.1.dll
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseBusiness\bin\Debug\DevExpress.Xpf.Core.v11.1.dll

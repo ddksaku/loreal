@@ -1,0 +1,184 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{09AF4898-7E72-4737-9CDF-A93FE2A6BFA6}"
+	ProjectSection(SolutionItems) = preProject
+		StrongName.snk = StrongName.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{87BEC375-A671-419D-AEBD-63949962C63F}"
+	ProjectSection(SolutionItems) = preProject
+		Libs\DevExpress.Data.v11.1.dll = Libs\DevExpress.Data.v11.1.dll
+		Libs\DevExpress.Printing.v11.1.Core.dll = Libs\DevExpress.Printing.v11.1.Core.dll
+		Libs\DevExpress.Xpf.Core.v11.1.Design.dll = Libs\DevExpress.Xpf.Core.v11.1.Design.dll
+		Libs\DevExpress.Xpf.Core.v11.1.dll = Libs\DevExpress.Xpf.Core.v11.1.dll
+		Libs\DevExpress.Xpf.Grid.v11.1.Core.dll = Libs\DevExpress.Xpf.Grid.v11.1.Core.dll
+		Libs\DevExpress.Xpf.Grid.v11.1.dll = Libs\DevExpress.Xpf.Grid.v11.1.dll
+		Libs\DevExpress.Xpf.Printing.v11.1.Core.dll = Libs\DevExpress.Xpf.Printing.v11.1.Core.dll
+		Libs\DevExpress.Xpf.Printing.v11.1.dll = Libs\DevExpress.Xpf.Printing.v11.1.dll
+		Libs\DevExpress.XtraEditors.v11.1.dll = Libs\DevExpress.XtraEditors.v11.1.dll
+		Libs\log4net.dll = Libs\log4net.dll
+		Libs\mageui.exe = Libs\mageui.exe
+		Libs\Microsoft.ReportViewer.Common.dll = Libs\Microsoft.ReportViewer.Common.dll
+		Libs\Microsoft.ReportViewer.WinForms.dll = Libs\Microsoft.ReportViewer.WinForms.dll
+		Libs\nunit.framework.dll = Libs\nunit.framework.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{43C942E4-3750-4F03-AB81-0DEC43384A12}"
+	ProjectSection(SolutionItems) = preProject
+		_SQL\Allocation\allocation-AnimationID.sql = _SQL\Allocation\allocation-AnimationID.sql
+		_SQL\Allocation\allocation.sql = _SQL\Allocation\allocation.sql
+		_SQL\Allocation\allocation_AnimationProductDetailID.sql = _SQL\Allocation\allocation_AnimationProductDetailID.sql
+		_SQL\CalculateTotals.sql = _SQL\CalculateTotals.sql
+		_SQL\Allocation\countSale.sql = _SQL\Allocation\countSale.sql
+		_SQL\createIndexes.sql = _SQL\createIndexes.sql
+		_SQL\Delete.sql = _SQL\Delete.sql
+		_SQL\Allocation\groupCapacityFunction.sql = _SQL\Allocation\groupCapacityFunction.sql
+		_SQL\Allocation\logFileProcedure.sql = _SQL\Allocation\logFileProcedure.sql
+		_SQL\Allocation\roundMultipleFunction.sql = _SQL\Allocation\roundMultipleFunction.sql
+		_SQL\Allocation\roundWarehouseMultipleFunction.sql = _SQL\Allocation\roundWarehouseMultipleFunction.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Triggers", "Triggers", "{864F2A51-DFEF-425F-8826-86EC437E1D54}"
+	ProjectSection(SolutionItems) = preProject
+		_SQL\Triggers\tr_AnimationProductDetail_AllocationQuantity.sql = _SQL\Triggers\tr_AnimationProductDetail_AllocationQuantity.sql
+		_SQL\Triggers\tr_AnimationProductDetail_DivisibilityByMultiple.sql = _SQL\Triggers\tr_AnimationProductDetail_DivisibilityByMultiple.sql
+		_SQL\Triggers\tr_CustomerAllocation_CheckFixedAgainstAllocationQuantity.sql = _SQL\Triggers\tr_CustomerAllocation_CheckFixedAgainstAllocationQuantity.sql
+		_SQL\Triggers\tr_CustomerAllocation_CheckFixedAgainstCapacity.sql = _SQL\Triggers\tr_CustomerAllocation_CheckFixedAgainstCapacity.sql
+		_SQL\Triggers\tr_CustomerAllocation_DivisibilityOfFixedAllocation.sql = _SQL\Triggers\tr_CustomerAllocation_DivisibilityOfFixedAllocation.sql
+		_SQL\Triggers\tr_CustomerGroupAllocation_CheckFixedAgainstAllocationQuantity.sql = _SQL\Triggers\tr_CustomerGroupAllocation_CheckFixedAgainstAllocationQuantity.sql
+		_SQL\Triggers\tr_CustomerGroupAllocation_CheckFixedAgainstCapacity.sql = _SQL\Triggers\tr_CustomerGroupAllocation_CheckFixedAgainstCapacity.sql
+		_SQL\Triggers\tr_CustomerGroupAllocation_DivisibilityOfFixedAllocation.sql = _SQL\Triggers\tr_CustomerGroupAllocation_DivisibilityOfFixedAllocation.sql
+		_SQL\Triggers\triggerErrorStates.txt = _SQL\Triggers\triggerErrorStates.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Allocation", "Allocation", "{F2475989-91B4-4C01-A4BA-A4FC8F04CEA3}"
+	ProjectSection(SolutionItems) = preProject
+		_SQL\Allocation\allocation-AnimationID.sql = _SQL\Allocation\allocation-AnimationID.sql
+		_SQL\Allocation\allocation.sql = _SQL\Allocation\allocation.sql
+		_SQL\Allocation\allocation_AnimationProductDetailID.sql = _SQL\Allocation\allocation_AnimationProductDetailID.sql
+		_SQL\Allocation\countSale.sql = _SQL\Allocation\countSale.sql
+		_SQL\Allocation\groupCapacityFunction.sql = _SQL\Allocation\groupCapacityFunction.sql
+		_SQL\Allocation\logFileProcedure.sql = _SQL\Allocation\logFileProcedure.sql
+		_SQL\Allocation\roundMultipleFunction.sql = _SQL\Allocation\roundMultipleFunction.sql
+		_SQL\Allocation\roundWarehouseMultipleFunction.sql = _SQL\Allocation\roundWarehouseMultipleFunction.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{EE66B7CB-E95A-4A5E-BA5E-64BDD42A6D64}"
+	ProjectSection(SolutionItems) = preProject
+		_Doc\LPD Optimise Phase 1 - Business Requirements v1.1 w track changes.doc = _Doc\LPD Optimise Phase 1 - Business Requirements v1.1 w track changes.doc
+		_Doc\LPD_Optimise_Phase1_WBS-Revision01.xlsx = _Doc\LPD_Optimise_Phase1_WBS-Revision01.xlsx
+		_Doc\Phase 1 Screen Mockups inc sample data.xls = _Doc\Phase 1 Screen Mockups inc sample data.xls
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseData", "LorealOptimiseData\LorealOptimiseData.csproj", "{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseGui", "LorealOptimiseGui\LorealOptimiseGui.csproj", "{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseSql", "SqlClrIntegration\LorealOptimiseSql.csproj", "{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseUnitTest", "LorealOptimiseUnitTest\LorealOptimiseUnitTest.csproj", "{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseBusiness", "LorealOptimiseBusiness\LorealOptimiseBusiness.csproj", "{B72D2439-8EA3-4349-9958-D8C3B0593DCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LorealOptimiseShared", "LorealOptimiseShared\LorealOptimiseShared.csproj", "{979B063B-6246-4112-8184-36655D319573}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "DatabaseDeploy", "DatabaseDeploy\DatabaseDeploy.dbproj", "{9908A56D-FB22-41C1-A207-AF74C0E6540A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimationProductGenerator", "AnimationProductGenerator\AnimationProductGenerator.csproj", "{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}.Release|x86.ActiveCfg = Release|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BB0E92C5-7096-4E4B-8BAD-49F337BFC955}.Release|x86.ActiveCfg = Release|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{50CA9B9C-069B-4D29-83F9-72D9F8BD69BB}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B3CF4DBB-6147-485B-B884-4A1EFDBB09D7}.Release|x86.ActiveCfg = Release|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B72D2439-8EA3-4349-9958-D8C3B0593DCB}.Release|x86.ActiveCfg = Release|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{979B063B-6246-4112-8184-36655D319573}.Release|x86.ActiveCfg = Release|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{9908A56D-FB22-41C1-A207-AF74C0E6540A}.Release|x86.ActiveCfg = Release|Any CPU
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Debug|x86.ActiveCfg = Debug|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Debug|x86.Build.0 = Debug|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Release|Any CPU.ActiveCfg = Release|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Release|Mixed Platforms.Build.0 = Release|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Release|x86.ActiveCfg = Release|x86
+		{52970702-6CDB-41A6-AC3A-EF4ACDF1FDE3}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87BEC375-A671-419D-AEBD-63949962C63F} = {09AF4898-7E72-4737-9CDF-A93FE2A6BFA6}
+		{43C942E4-3750-4F03-AB81-0DEC43384A12} = {09AF4898-7E72-4737-9CDF-A93FE2A6BFA6}
+		{EE66B7CB-E95A-4A5E-BA5E-64BDD42A6D64} = {09AF4898-7E72-4737-9CDF-A93FE2A6BFA6}
+		{864F2A51-DFEF-425F-8826-86EC437E1D54} = {43C942E4-3750-4F03-AB81-0DEC43384A12}
+		{F2475989-91B4-4C01-A4BA-A4FC8F04CEA3} = {43C942E4-3750-4F03-AB81-0DEC43384A12}
+	EndGlobalSection
+EndGlobal

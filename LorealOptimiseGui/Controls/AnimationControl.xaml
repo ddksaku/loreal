@@ -1,0 +1,118 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.AnimationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:uc="clr-namespace:LorealOptimiseGui.Controls"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui">
+   
+    <DockPanel>
+        <Grid HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" Name="rowDefUpperPart" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65*"></ColumnDefinition>
+            <ColumnDefinition Width="35*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Name="gbxMainDetails" Padding="5" HorizontalAlignment="Stretch">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Main Details"></Label>
+                        <Label Cursor="Hand" Content="Hide Details" Name="lblShowHideDetails" FontSize="9" VerticalAlignment="Center" MouseLeftButtonUp="Label_MouseLeftButtonUp"></Label>
+                    </StackPanel>
+                </GroupBox.Header>
+                
+                <Grid Name="pnlMainDetails">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="185" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="190" />
+                        <ColumnDefinition Width="60*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0" Name="grdRow01" />
+                        <RowDefinition Height="30" Name="grdRow02" />
+                        <RowDefinition Height="30" Name="grdRow03" />
+                        <RowDefinition Height="30" Name="grdRow04" />
+                        <RowDefinition Height="30" Name="grdRow05" />
+                        <RowDefinition Height="30" Name="grdRow06" />
+                        <RowDefinition Height="30" Name="grdRow07" />
+                        <RowDefinition Height="30" Name="rowDefOrder" />
+                        <RowDefinition Height="30" Name="grdRow09" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Sales Drive" Grid.Row="1" />
+                    <Label Content="Animation Name" Grid.Row="2" />
+                    <Label Content="Animation Code" Grid.Column="2" Grid.Row="2" />
+                    <Label Content="SAP Promotion Despatch Code" Grid.Row="1" Grid.Column="2" />
+                    <Label Content="Default Customer Reference" Grid.Row="3" Grid.Column="2" />
+                    <Label Content="Animation Status" Grid.Row="8" />
+                    <Label Content="Default Requested Delivery Date" Grid.Row="6" />
+                    <Label Content="Priority" Grid.Row="3" Grid.Column="0" />
+                    <Label Content="Animation Type" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,4,26.453,26" Grid.RowSpan="2" />
+                    <Label Content="Default On Counter Date" Grid.Row="5" Grid.Column="0" />
+                    <Label Content="Default PLV Delivery Deadline" Grid.Row="4" Grid.Column="2" />
+                    <Label Content="Default PLV Component Deadline" Grid.Row="5" Grid.Column="2" />
+                    <Label Content="Default Stock Deadline" Grid.Row="6" Grid.Column="2" />
+                    <Label Content="Distribution Channel" Grid.Row="7" Grid.Column="0" />
+                    <Label Content="Order Type" Grid.Row="7" Grid.Column="2" />
+                    <dxe:TextEdit Grid.Column="1" Grid.Row="2" Margin="2,2,2,2" Name="txtAnimationName" Text="{Binding Animation.Name}" TabIndex="1" />
+                    <dxe:TextEdit Grid.Column="3" Grid.Row="2" Margin="2,2,2,2" Name="txtAnimationCode" Text="{Binding Animation.Code}" TabIndex="9" Validate="txtAnimationCode_Validate" />
+                    <dxe:TextEdit Grid.Column="3" Grid.Row="1" Margin="2,2,2,2" Name="txtSAPCode" Text="{Binding Animation.SAPDespatchCode}" TabIndex="8" EditValueChanged="txtSAPCode_EditValueChanged" />
+                    <dxe:TextEdit Grid.Column="3" Grid.Row="3" Margin="2,2,2,2" Name="txtDefaultCustomerReference" Text="{Binding Animation.DefaultCustomerReference}" TabIndex="10" />
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="1" Grid.Row="1" Margin="2,2,2,2" Name="cmbSalesDrive" ValueMember="ID" DisplayMember="Name" EditValue="{Binding Path=Animation.IDSalesDrive}" TabIndex="0" EditValueChanged="cmbSalesDrive_EditValueChanged" />
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="1" Grid.Row="8" Margin="2,2,2,2" Name="cmbAnimationStatus" TabIndex="7" EditValue="{Binding Animation.StatusName, UpdateSourceTrigger=PropertyChanged}" Validate="cmbAnimationStatus_Validate" EditValueChanged="cmbAnimationStatus_EditValueChanged"></dxe:ComboBoxEdit>
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="1" Grid.Row="3" Margin="2,2,2,2" Name="cmbPriority" ValueMember="ID" EditValue="{Binding Animation.IDPriority}" DisplayMember="Name" TabIndex="2" EditValueChanged="cmbPriority_EditValueChanged" />
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="1" Grid.Row="4" Margin="2,2,2,2" Name="cmbAnimationType" ValueMember="ID" EditValue="{Binding Animation.IDAnimationType}" DisplayMember="Name" TabIndex="3" EditValueChanged="cmbAnimationType_EditValueChanged" />
+                    <dxe:DateEdit Grid.Column="1" Grid.Row="6" Margin="2,2,2,2" Name="dateDefaultRequestedDeliveryDate" EditValue="{Binding Animation.RequestedDeliveryDate, Mode=TwoWay}" TabIndex="5" />
+                    <dxe:DateEdit Grid.Column="1" Grid.Row="5" Margin="2,2,2,2" Name="dateCounterDate" EditValueChanged="dateCounterDate_EditValueChanged" EditValue="{Binding Animation.OnCounterDate}" TabIndex="4" />
+                    <dxe:DateEdit Grid.Column="3" Grid.Row="4" Margin="2,2,2,2" Name="datePLVDeliveryDeadline" EditValueChanged="datePLVDeliveryDeadline_EditValueChanged" EditValue="{Binding Animation.PLVDeliveryDate, Mode=TwoWay}" TabIndex="11" />
+                    <dxe:DateEdit Grid.Column="3" Grid.Row="5" Margin="2,2,2,2" Name="datePLVComponentDeadline" EditValueChanged="datePLVComponentDeadline_EditValueChanged" EditValue="{Binding Animation.PLVComponentDate, Mode=TwoWay}" TabIndex="12" />
+                    <dxe:DateEdit Grid.Column="3" Grid.Row="6" Margin="2,2,2,2" Name="dateStockDeadline" EditValueChanged="dateStockDeadline_EditValueChanged" EditValue="{Binding Animation.StockDate, Mode=TwoWay}" TabIndex="13" />
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="1" Grid.Row="7" Margin="2,2,2,2" Name="cmbDistributionChannel" TabIndex="6" EditValue="{Binding Animation.IDDistributionChannel_Order}" ValueMember="ID" DisplayMember="Name" />
+                    <dxe:ComboBoxEdit IsTextEditable="False" Grid.Column="3" Grid.Row="7" Margin="2,2,2,2" Name="cmbOrderType" TabIndex="14" EditValue="{Binding Animation.IDOrderType_Order}" ValueMember="ID" DisplayMember="Name" />
+
+                    <StackPanel Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Name="btnAnimationCheck" HorizontalAlignment="Right" Width="80" Margin="2,2,2,2" Click="btnAnimationCheck_Click">Check</Button>
+                        <Button Name="btnAnimationReport" HorizontalAlignment="Right" Width="80" Margin="2,2,2,2" Click="btnAnimationReport_Click">Report</Button>
+                        <Button Name="btnSave" ToolTipService.IsEnabled="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={uc:BTBConverter}}" ToolTipService.ShowOnDisabled="True" ToolTip="{Binding SavingErrorMessage, Mode = OneWay}" Command="{Binding SaveCommand}" HorizontalAlignment="Right" Width="80" Margin="2,2,2,2" TabIndex="26">Save</Button>                        
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Background="AliceBlue">
+                <Label Content="Last Allocation Run: " Name="lblLastAllocationRunLabel" VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Animation.DateCalculated, StringFormat={}{0:dd.MM.yyyy HH:mm:ss}}" Name="lblLastAllocationRun" VerticalAlignment="Center" />
+            </StackPanel>
+            
+            <GroupBox Grid.Column="1" Name="gbxProcurementType" Padding="5" Header="Procurement Plan Deadlines" HorizontalAlignment="Stretch">
+                <uc:ProcurementPlan></uc:ProcurementPlan>
+            </GroupBox>
+        </Grid>
+
+        <TabControl Grid.Row="1" Name="tabAnimation" Grid.ColumnSpan="2">
+            <TabItem Header="1. Products" Name="iteProducts">
+                <uc:ProductAnimation x:Name="ucProductAnimation" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch"></uc:ProductAnimation>
+            </TabItem>
+            <TabItem Header="2. Customers" Name="iteCustomers">
+                <uc:CustomerGroupAnimation x:Name="ucCustomers"></uc:CustomerGroupAnimation>
+            </TabItem>
+            <TabItem Header="3. Prices and Quantities per Country" Name="itePricesQuantities">
+                <uc:ProductDetailAnimation x:Name="ucProductDetail"></uc:ProductDetailAnimation>
+            </TabItem>
+            <TabItem Header="4. Fixed Allocations (optional)" Name="iteFixedAllocations">
+                <TabItem.Style>
+                    <Style PresentationTraceSources.TraceLevel="High">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Allocations}" Value="{x:Null}">
+                                <Setter Property="Control.Visibility" Value="Hidden"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Style>
+                <uc:AnimationAllocation x:Name="ucAnimationAllocation"></uc:AnimationAllocation>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</LorealOptimiseGui:BaseUserControl>

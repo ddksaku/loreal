@@ -1,0 +1,51 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.ProcurementPlan"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1">
+    
+    <!--<UserControl.Resources>
+        <DataTemplate x:Key="columnHeaderTemplate">
+            <ContentPresenter TextBlock.TextAlignment="Center" Content="{Binding}" 
+                              Style="{Binding Path=(dxg:GridColumnHeader.GridColumn).ActualColumnHeaderContentStyle, RelativeSource={RelativeSource TemplatedParent}}" />
+        </DataTemplate>
+    </UserControl.Resources>-->
+
+    <Grid>
+        <dxg:GridControl Name="grdProcurement">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="RetailerType" ReadOnly="True" Header="Retailer Type">
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="OnCounterDate" ReadOnly="True" Header="On Counter">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings MaskType="DateTime" Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="ComponentDeadline" ReadOnly="True" Header="Component">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings MaskType="DateTime" Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="DeliveryDeadline" ReadOnly="True" Header="Delivery">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings MaskType="DateTime" Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="StockDeadline" ReadOnly="True" Header="Stock">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:TextEditSettings MaskType="DateTime" Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True" />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView CellStyle="{StaticResource CellNormalStyle}" AutoWidth="True" ShowGroupPanel="False" ShowIndicator="False" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

@@ -1,0 +1,19 @@
+1. In Internet Explorer enter address of Report Manager
+ (System Administrator should know this, alternatively it could be found in Control Panel/Administrative Tools/Internet Information Services/Web Sites)
+
+2. Click New Data Source button
+
+2a. Fill the table as follows:
+	Name:  			LorealOptimise
+	Connection Type: 	Microsoft SQL Server
+	Connection String:      <<enter connection string to DB (should be same as in DTS config)>>
+
+2b. Click OK
+
+3. Click Upload File button
+
+3a. Browse to find file 'AlocationReport.rdl'  (or 'StoreAllocationReport.rdl')
+
+3b. Click ok
+
+4. That's all

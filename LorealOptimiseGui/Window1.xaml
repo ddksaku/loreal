@@ -1,0 +1,33 @@
+﻿<Window x:Class="LorealOptimiseGui.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Grid="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:uc="clr-namespace:LorealOptimiseGui.Lists"
+    Title="Optimise" Height="1000" Width="800" ShowInTaskbar="True" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <uc:CustomerGroupsItemTypes Grid.Row="0" Grid.Column="0" />
+        <uc:Products Grid.Row="1" Grid.Column="0"></uc:Products>
+        <uc:Signatures Grid.Row="2" Grid.Column="0"></uc:Signatures>
+        <uc:AnimationTypes Grid.Row="3" Grid.Column="0"></uc:AnimationTypes>
+        <uc:BrandAxes Grid.Row="4" Grid.Column="0"></uc:BrandAxes>
+        <uc:CustomerGroups Grid.Row="0" Grid.Column="1" />
+        <uc:ItemTypes Grid.Row="1" Grid.Column="1" />
+        <uc:RetailerTypes Grid.Row="2" Grid.Column="1" />
+        <uc:SalesDrives Grid.Row="3" Grid.Column="1" />
+        <uc:Categories Grid.Row="4" Grid.Column="1" />
+        
+    </Grid>
+
+</Window>

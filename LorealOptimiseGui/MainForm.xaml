@@ -1,0 +1,90 @@
+﻿<Window x:Class="LorealOptimiseGui.MainForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:uc2="clr-namespace:LorealOptimiseGui.Controls"
+    Title="Optimise" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="icon.ico">
+    <Grid x:Name="grdMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="1" Height="22" Name="mnuMain" MouseEnter="mnuMain_MouseEnter">
+            <MenuItem Header="Animations" Name="itmAnimations">
+                <MenuItem Header="Add New Animation" x:Name="itmAddAnimation" />
+                <MenuItem Header="View Animations" Name="itmViewAnimation" />
+            </MenuItem>
+            <MenuItem Header="Stores and Sales" Name="itmStoresSales">
+                <MenuItem Header="Customer Groups" Name="itmSSCustomerGroups" />
+                <MenuItem Header="Customer Stores" Name="itmCustomerStores" />
+                <MenuItem Header="Customer Capacity" Name="itmCapacities" />
+                <MenuItem Header="Store Brands Exclusions" Name="itmBrandExclusions" />
+                <MenuItem Header="Sales Information" Name="itmSales" />
+            </MenuItem>
+            <MenuItem Header="Allocations" Name="itmAllocations">
+                <MenuItem Header="Run Allocation" Name="itmRunAllocations" />
+            </MenuItem>
+            <MenuItem Header="Reports" Name="itmReports">
+                <MenuItem Header="Allocation Report" Click="menuAllocationReport_Click" />
+                <MenuItem Header="Store Allocation Report" Click="menuStoreAllocationReport_Click" />
+            </MenuItem>
+            <MenuItem Header="Administration" Name="itmAdministration" VerticalAlignment="Top">
+                <MenuItem Header="Division Administration" Name="itmDivisionAdmin">
+                    <MenuItem Header="User and Role Maintenance" Name="itmUsersAndRoles" />
+                    <MenuItem Header="Divisions" Name="itmDivisions" />
+                    <MenuItem Header="Sales Areas" Name="itmSalesAreas" />
+                    <MenuItem Header="Application Settings" Name="itmAppSettings" />
+                    <MenuItem Header="Event Log" Name="itmEventLog" />
+                    <MenuItem Header="Audit Alerts" Name="itmAuditAlerts" />
+                    <MenuItem Header="General Lists" Name="itmGeneralLists">
+                        <MenuItem Header="Products" Name="itmProducts" />
+                        <MenuItem Header="Signatures" Name="itmSignatures" />
+                        <MenuItem Header="Brand/Axes" Name="itmBrandAxes" />
+                        <MenuItem Header="Animation Types" Name="itmAnimationTypes" />
+                        <MenuItem Header="Item Groups" Name="itmItemGroups" />
+                        <MenuItem Header="Item Types" Name="itmItemTypes" />
+                        <MenuItem Header="Order Types" Name="itmOrderTypes" />
+                        <MenuItem Header="Sales Drives" Name="itmSalesDrives" />
+                        <MenuItem Header="Store Categories" Name="itmStoreCategories" />
+                        <MenuItem Header="Animation Priorities" Name="itmAnimationPriorities" />
+                        <MenuItem Header="Customer Groups" Name="itmCustomerGroups" />
+                        <MenuItem Header="Customer Group Item Types" Name="itmCustomerGroupItemTypes" />
+                        <MenuItem Header="Retailer Types" Name="itmRetailerTypes" />                        
+                    </MenuItem>
+                </MenuItem>
+                
+                <MenuItem Header="System Administration" Name="itmSystemAdmin">
+                    <MenuItem Header="User and Role Maintenance" Name="itmUsersAndRolesSys" />
+                    <MenuItem Header="Divisions" Name="itmDivisionsSys" />
+                    <MenuItem Header="Sales Areas" Name="itmSalesAreasSys" />
+                    <MenuItem Header="Sales Organisations" Name="itmSalesOrganizations" />
+                    <MenuItem Header="Application Settings" Name="itmAppSettingsSys" />
+                    <MenuItem Header="History Log" Name="itmHistoryLog" />
+                    <MenuItem Header="Users" Name="itmUsers" />
+                    <MenuItem Header="Users in Roles" Name="itmUsersInRoles" Visibility="Collapsed" />
+                    <MenuItem Header="System Messages" Name="itmSystemMessages" />
+                    <MenuItem Header="Distribution Channels" Name="itmDistributionChannels" />
+                </MenuItem>
+                               
+            </MenuItem>
+        </Menu>
+        <Rectangle>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFBDCCDA" Offset="0" />
+                    <GradientStop Color="White" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        
+        <uc2:Header Grid.Row="0" Width="Auto" Height="Auto" />
+        <Grid Name="grdControlArea" Grid.Row="2">
+            <uc2:AdministrationTabs Grid.Row="2" x:Name="ucAdminTab"></uc2:AdministrationTabs>
+            <uc2:StoresAndSalesTabs Grid.Row="2" x:Name="ucStoresSalesTab"></uc2:StoresAndSalesTabs>
+            <uc2:AnimationControl Grid.Row="2" x:Name="ucAnimation"></uc2:AnimationControl>
+            <uc2:AnimationList Grid.Row="2" x:Name="ucAnimationList" />
+            <uc2:RunAllocations Grid.Row="2" x:Name="ucRunAllocations" />
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,69 @@
+﻿    <LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Lists.Users"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:controls="clr-namespace:LorealOptimiseGui.Controls"
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width=".80*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="3" Name="lblTitle" Content="User and Role Maintenance" Margin="2" HorizontalAlignment="Left"></Label>
+        <Label Name="lblChooseUser" Grid.Row="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14">Enter user name:</Label>
+        <TextBox Name="txtUser" Text="{Binding Path=LoginName, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center">
+        </TextBox>
+        <Button Grid.Column="2" Grid.Row="1" Name="btnAddUser" Command="{Binding InsertCommand}" Width="120" HorizontalAlignment="Left" Margin="2">Add User</Button>
+        <Label Grid.Column="3" Grid.Row="1" Name="lblAssignRoles" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="14">Assign Roles (to selected user)</Label>
+        <dxg:GridControl Grid.ColumnSpan="3" Grid.Row="2" Name="grdUsers" DataSource="{Binding Users}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="LoginName" Header="User Name" AllowEditing="False" />
+                <dxg:GridColumn FieldName="Name" AllowEditing="False" />
+                <dxg:GridColumn FieldName="EmailAddress" AllowEditing="False" />
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" ShowAutoFilterRow="True" ShowIndicator="True" FocusedRow="{Binding SelectedUser, Mode=TwoWay}" FocusedRowChanged="TableView_FocusedRowChanged" PreviewKeyDown="TableView_PreviewKeyDown" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+        <dxg:GridControl Grid.Column="4" Grid.Row="2" Name="grdRoles">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="IDRole" Header="Role" AllowEditing="True" ReadOnly="False" SortMode="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboRoles" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.RoleName}" />
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="IDDivision" Header="Division" AllowEditing="True" ReadOnly="False" SortMode="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboDivisions" DisplayMember="Name" ValueMember="ID" AllowDefaultButton="True">
+                        </dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.DivisionName}" />
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" NewItemRowPosition="Top" ShownEditor="TableView_ShownEditor" InitNewRow="TableView_InitNewRow" RowCanceled="TableView_RowCanceled" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

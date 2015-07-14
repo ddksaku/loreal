@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LorealOptimiseData</name>
+    </assembly>
+    <members>
+        <member name="T:LorealOptimiseData.IPrimaryKey">
+            <summary>
+            Interfaces used to identify primary key of the table
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.IPrimaryKey.ID">
+            <summary>
+            Primary key of the table
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.IDivision">
+            <summary>
+            Interface used to identify entities which has relation with Division entity
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.IDivision.Division">
+            <summary>
+            Division
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.ITrackChanges">
+            <summary>
+            Interface used to save/track last changes made to the table
+            If table needs to be tracked. Changes are track in table HistoryLog
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.ITrackChanges.ModifiedBy">
+            <summary>
+            Identification of the user who changed the table 
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.ITrackChanges.ModifiedDate">
+            <summary>
+            Date of the change
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.Sale">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.AnimationType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.RetailerType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.LoggedUser">
+            <summary>
+            Class with informatins about currently logged user
+            </summary>
+        </member>
+        <member name="M:LorealOptimiseData.LoggedUser.GetInstance">
+            <summary>
+            Get instance of logged user. SetInstance method must be called before getting instance of logged user. 
+            </summary>
+            <param name="user">User entity</param>
+            <param name="division">Division of the user. User can be assigned to more than one division, but can work with application only with one division</param>
+            <returns>Return instance of Logged user</returns>
+        </member>
+        <member name="M:LorealOptimiseData.LoggedUser.SetInstance(LorealOptimiseData.User,LorealOptimiseData.Division)">
+            <summary>
+            Sets intance of logged user
+            </summary>
+            <param name="user"></param>
+            <param name="division"></param>
+        </member>
+        <member name="M:LorealOptimiseData.LoggedUser.#ctor(LorealOptimiseData.User,LorealOptimiseData.Division)">
+            <summary>
+            Creates new instance of Logged user from user and division entity. Assigns also Roles property
+            </summary>
+            <param name="user"></param>
+            <param name="division"></param>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.LoginName">
+            <summary>
+            Domain login name
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.Name">
+            <summary>
+            Name of logged user
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.Division">
+            <summary>
+            Division
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.User">
+            <summary>
+            Logged User
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.Roles">
+            <summary>
+            List of roles, which user belongs to in specified Division
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.IsLogged">
+            <summary>
+            Returns true, if user is logged. Otherwise returns false
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.LoggedUser.LoggedDivision">
+            <summary>
+            Returns Division, on which user logged in
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.Division">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.SystemMessagesManager">
+            <summary>
+            Class which handles operations with system messages.
+            Should be located in Bussiness, but we have a lot of messages in Data assembly and move them to bussiness can have big impact on application.
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.OrderType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.Customer.IsSelected">
+            <summary>
+            This value is used on Generate capacity screen and indicates if the customer is selected
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.DebuggerWriter">
+            <summary>
+            Implements a <see cref="T:System.IO.TextWriter"/> for writing information to the debugger log.
+            </summary>
+            <seealso cref="M:System.Diagnostics.Debugger.Log(System.Int32,System.String,System.String)"/>
+        </member>
+        <member name="M:LorealOptimiseData.DebuggerWriter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:LorealOptimiseData.DebuggerWriter"/> class.
+            </summary>
+        </member>
+        <member name="M:LorealOptimiseData.DebuggerWriter.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LorealOptimiseData.DebuggerWriter"/> class with the specified level and category.
+            </summary>
+            <param name="level">A description of the importance of the messages.</param>
+            <param name="category">The category of the messages.</param>
+        </member>
+        <member name="M:LorealOptimiseData.DebuggerWriter.#ctor(System.Int32,System.String,System.IFormatProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LorealOptimiseData.DebuggerWriter"/> class with the specified level, category and format provider.
+            </summary>
+            <param name="level">A description of the importance of the messages.</param>
+            <param name="category">The category of the messages.</param>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"/> object that controls formatting.</param>
+        </member>
+        <member name="T:LorealOptimiseData.DbDataContext">
+            <summary>
+            DataContext for whole application
+            </summary>
+        </member>
+        <member name="M:LorealOptimiseData.DbDataContext.SubmitChanges(System.Data.Linq.ConflictMode)">
+            <summary>
+            Sends changes that were made to retrieved objects to the underlying database, and specifies the action to be taken if the submission fails.
+            Assign ModifiedBy and ModifiedDate properties to entities, which implementes ITrackHistory interface during insert/update
+            Creates new record in HistoryLog for entities being deleted
+            </summary>
+            <param name="failureMode">The action to be taken if the submission fails. Valid arguments are as follows: System.Data.Linq.ConflictMode.FailOnFirstConflictSystem.Data.Linq.ConflictMode.ContinueOnConflict</param>
+        </member>
+        <member name="M:LorealOptimiseData.DbDataContext.PreProcessChangeSet(System.Data.Linq.ChangeSet)">
+            <summary>
+            Runs before SubmitChanges is called. 
+            Assignes ModifiedBy and ModifiedDate properties for tables, that implementes ITrackChanges interface
+            </summary>
+            <param name="changes"></param>
+        </member>
+        <member name="M:LorealOptimiseData.DbDataContext.PostProcessChangeSet(System.Data.Linq.ChangeSet)">
+            <summary>
+            Runs after SubmitChanges is called. 
+            Inserts new record into HistoryLog table if some record where deleted
+            </summary>
+            <param name="changes"></param>
+        </member>
+        <member name="T:LorealOptimiseData.SalesOrganization">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.DistributionChannel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.AnimationProductDetail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.SalesDrive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.User">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.CustomerGroup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:LorealOptimiseData.AnimationProduct.RetailerTypeAllocation">
+            <summary>
+            string = retailer type name
+            int = sum of allocation for customers assigned to retailer type name
+            </summary>
+        </member>
+        <member name="T:LorealOptimiseData.AnimationCustomerGroup">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

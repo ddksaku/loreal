@@ -1,0 +1,20 @@
+﻿LorealOptimiseGui
+
+
+winexe
+C#
+.cs
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseGui\obj\Debug\
+LorealOptimiseGui
+none
+false
+DEBUG;TRACE
+F:\Project Development\MM\Mywork\Loreal\LorealOptimise\trunk\LorealOptimiseGui\App.xaml
+56-108822363
+1-1578682317
+692043598767
+35987437878
+Controls\Allocations\AllocationLog.xaml;Controls\Allocations\AllocationResult.xaml;Controls\Allocations\RunAllocations.xaml;Controls\AnimationControl.xaml;Controls\AdministrationTabs.xaml;Controls\AnimationList.xaml;Controls\Animation\AnimationAllocation.xaml;Controls\Animation\CreateNewProduct.xaml;Controls\Animation\CustomerAllocation.xaml;Controls\Animation\CustomerGroupAllocation.xaml;Controls\Animation\CustomerGroupAnimation.xaml;Controls\Animation\ProcurementPlan.xaml;Controls\Animation\ProductAnimation.xaml;Controls\Animation\ProductDetailAnimation.xaml;Controls\Header.xaml;Controls\StoresAndSalesTabs.xaml;Controls\StoresAndSales\AddCapacities.xaml;Controls\StoresAndSales\AddSales.xaml;Controls\StoresAndSales\MergeCustomerGroup.xaml;Controls\StoresAndSales\ReplaceAccountNumber.xaml;Lists\AnimationTypes.xaml;Lists\ApplicationSettings.xaml;Lists\AuditAlerts.xaml;Lists\BrandAxes.xaml;Lists\Categories.xaml;Lists\EditProductMultiples.xaml;Lists\Lockouts.xaml;Lists\MergeProduct.xaml;Lists\SystemMessages.xaml;Lists\CustomerBrandExclusions.xaml;Lists\CustomerCapacities.xaml;Lists\CustomerGroups.xaml;Lists\CustomerGroupsItemTypes.xaml;Lists\CustomerStores.xaml;Lists\DistributionChannels.xaml;Lists\Divisions.xaml;Lists\EventLogs.xaml;Lists\HistoryLogs.xaml;Lists\ItemGroups.xaml;Lists\ItemTypes.xaml;Lists\OrderTypes.xaml;Lists\Priorities.xaml;Lists\Products.xaml;Lists\RetailerTypes.xaml;Lists\Sales.xaml;Lists\SalesAreas.xaml;Lists\SalesDrives.xaml;Lists\SalesOrganizations.xaml;Lists\Signatures.xaml;Lists\UserRoles.xaml;Lists\Users.xaml;LongTaskProgressWindow.xaml;MainForm.xaml;Report.xaml;SelectDivision.xaml;Window1.xaml;
+
+True
+

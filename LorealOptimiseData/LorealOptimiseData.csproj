@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AEBA643-633B-404E-8E8A-A56BDCCEDD12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LorealOptimiseData</RootNamespace>
+    <AssemblyName>LorealOptimiseData</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>StrongName.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
+    <CodeAnalysisRuleSet>GlobalizationRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v11.1, Version=11.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <HintPath>..\Libs\DevExpress.Data.v11.1.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataClasses\Animation.cs" />
+    <Compile Include="DataClasses\AnimationCustomerGroup.cs" />
+    <Compile Include="DataClasses\AnimationProduct.cs" />
+    <Compile Include="DataClasses\AnimationProductDetail.cs" />
+    <Compile Include="DataClasses\AnimationType.cs" />
+    <Compile Include="DataClasses\ApplicationSetting.cs" />
+    <Compile Include="DataClasses\AuditAlert.cs" />
+    <Compile Include="DataClasses\BrandAxe.cs" />
+    <Compile Include="DataClasses\Category.cs" />
+    <Compile Include="DataClasses\Customer.cs" />
+    <Compile Include="DataClasses\CustomerAllocation.cs" />
+    <Compile Include="DataClasses\CustomerBrandExclusion.cs" />
+    <Compile Include="DataClasses\CustomerCapacity.cs" />
+    <Compile Include="DataClasses\CustomerCategory.cs" />
+    <Compile Include="DataClasses\CustomerGroup.cs" />
+    <Compile Include="DataClasses\CustomerGroupAllocation.cs" />
+    <Compile Include="DataClasses\CustomerGroupItemType.cs" />
+    <Compile Include="DataClasses\DistributionChannel.cs" />
+    <Compile Include="DataClasses\Division.cs" />
+    <Compile Include="DataClasses\EventLog.cs" />
+    <Compile Include="DataClasses\HistoryLog.cs" />
+    <Compile Include="DataClasses\ItemGroup.cs" />
+    <Compile Include="DataClasses\ItemType.cs" />
+    <Compile Include="DataClasses\Lockout.cs" />
+    <Compile Include="DataClasses\LoggedUser.cs" />
+    <Compile Include="DataClasses\Multiple.cs" />
+    <Compile Include="DataClasses\OrderType.cs" />
+    <Compile Include="DataClasses\Priority.cs" />
+    <Compile Include="DataClasses\Product.cs" />
+    <Compile Include="DataClasses\ProductConfirmed.cs" />
+    <Compile Include="DataClasses\ProductReceived.cs" />
+    <Compile Include="DataClasses\RetailerType.cs" />
+    <Compile Include="DataClasses\Role.cs" />
+    <Compile Include="DataClasses\Sale.cs" />
+    <Compile Include="DataClasses\SalesArea.cs" />
+    <Compile Include="DataClasses\SalesDrive.cs" />
+    <Compile Include="DataClasses\SalesEmployee.cs" />
+    <Compile Include="DataClasses\SalesOrganization.cs" />
+    <Compile Include="DataClasses\Signature.cs" />
+    <Compile Include="DataClasses\SystemMessage.cs" />
+    <Compile Include="DataClasses\User.cs" />
+    <Compile Include="DataClasses\UserRole.cs" />
+    <Compile Include="DataClasses\Version.cs" />
+    <Compile Include="Db.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DbDescription.cs" />
+    <Compile Include="DebuggerWriter.cs" />
+    <Compile Include="Enums\AnimationCustomerGroupOverrides.cs" />
+    <Compile Include="Enums\AnimationStatus.cs" />
+    <Compile Include="Enums\ProductSalesStatus.cs" />
+    <Compile Include="Enums\RecalculationType.cs" />
+    <Compile Include="Enums\RoleEnum.cs" />
+    <Compile Include="Exceptions\LorealChangeConflictException.cs" />
+    <Compile Include="Interfaces\ICleanEntityRef.cs" />
+    <Compile Include="Interfaces\IDeleted.cs" />
+    <Compile Include="Interfaces\IDeletionLimit.cs" />
+    <Compile Include="Interfaces\IDivision.cs" />
+    <Compile Include="Interfaces\IPrimaryKey.cs" />
+    <Compile Include="Interfaces\ITrackChanges.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SystemMessagesManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Db.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Db.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Db.dbml.layout">
+      <DependentUpon>Db.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="StrongName.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LorealOptimiseShared\LorealOptimiseShared.csproj">
+      <Project>{979B063B-6246-4112-8184-36655D319573}</Project>
+      <Name>LorealOptimiseShared</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

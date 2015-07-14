@@ -1,0 +1,2447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="LorealOptimise">
+      <rd:DataSourceID>299fff23-f0a7-4a34-8c58-6ec0f78c01e8</rd:DataSourceID>
+      <DataSourceReference>LorealOptimise</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11.7in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="DivisionID">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Report_Parameter_6</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="salesDrive">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SalesDrives</DataSetName>
+          <ValueField>SalesDriveName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Sales Drive</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SalesDrives</DataSetName>
+          <ValueField>SalesDriveName</ValueField>
+          <LabelField>SalesDriveName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="AnimationParametr">
+      <DataType>String</DataType>
+      <Prompt>Animation</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>AnimationParametr</DataSetName>
+          <ValueField>AnimationID</ValueField>
+          <LabelField>AnimatioName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="AllocationVersion">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>VersionTopOne</DataSetName>
+          <ValueField>VersionID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Allocation Version</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Versions</DataSetName>
+          <ValueField>VersionID</ValueField>
+          <LabelField>VersionName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="SalesEmployee">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SalesEmployee</DataSetName>
+          <ValueField>EmployeeName</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Sales Employee</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SalesEmployee</DataSetName>
+          <ValueField>EmployeeName</ValueField>
+          <LabelField>EmployeeName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="CustomerGroup">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CustomerGroups</DataSetName>
+          <ValueField>CustomerGroup</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Customer Group</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CustomerGroups</DataSetName>
+          <ValueField>CustomerGroup</ValueField>
+          <LabelField>CustomerGroup</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="CustomerDisplay">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Customer Display</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Customer Group</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>Store</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="OrderType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>OrderTypes</DataSetName>
+          <ValueField>OrderTypeID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Order Type</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>OrderTypes</DataSetName>
+          <ValueField>OrderTypeID</ValueField>
+          <LabelField>OrderType</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="SAP">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>SAPDespatchCodes</DataSetName>
+          <ValueField>SAPDespatchCode</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>SAP Promotion Despatch Code</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>SAPDespatchCodes</DataSetName>
+          <ValueField>SAPDespatchCode</ValueField>
+          <LabelField>SAPDespatchCode</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="OrderedInSAP">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>0</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Ordered in SAP</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>0</Value>
+            <Label>All</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>1</Value>
+            <Label>Not Ordered</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>2</Value>
+            <Label>Ordered</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>16.5in</InteractiveWidth>
+  <rd:GridSpacing>0.15cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <rd:ReportID>69bfd182-d9eb-4c40-9047-e1c66643b644</rd:ReportID>
+  <PageWidth>16.5in</PageWidth>
+  <DataSets>
+    <DataSet Name="SalesEmployee">
+      <Fields>
+        <Field Name="EmployeeName">
+          <DataField>EmployeeName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_EmployeeParametr</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@versionID">
+            <Value>=Parameters!AllocationVersion.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="CustomerGroups">
+      <Fields>
+        <Field Name="CustomerGroup">
+          <DataField>CustomerGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_customerGroupParameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="Footer">
+      <Fields>
+        <Field Name="Footer">
+          <DataField>Footer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandText>SELECT SettingValue AS Footer FROM dbo.ApplicationSettings
+WHERE SettingKey = 'AllocationReportFooter'
+AND IDDivision = @DIvisionID</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@DIvisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+    <DataSet Name="SalesDrives">
+      <Fields>
+        <Field Name="SalesDriveId">
+          <DataField>SalesDriveId</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="SalesDriveName">
+          <DataField>SalesDriveName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_salesDriveParametr</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@DivisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="Versions">
+      <Fields>
+        <Field Name="VersionName">
+          <DataField>VersionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_versionPatameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@animationID">
+            <Value>=Parameters!AnimationParametr.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="AnimationParametr">
+      <Fields>
+        <Field Name="AnimatioName">
+          <DataField>AnimatioName</DataField>
+        </Field>
+        <Field Name="AnimationID">
+          <DataField>AnimationID</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_animationPatameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="VersionTopOne">
+      <Fields>
+        <Field Name="VersionName">
+          <DataField>VersionName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_versionPatameterTopOne</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@animationID">
+            <Value>=Parameters!AnimationParametr.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="OrderTypes">
+      <Fields>
+        <Field Name="OrderType">
+          <DataField>OrderType</DataField>
+        </Field>
+        <Field Name="OrderTypeID">
+          <DataField>OrderTypeID</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_OrderTypeParameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+      <CaseSensitivity>False</CaseSensitivity>
+    </DataSet>
+    <DataSet Name="Main">
+      <Fields>
+        <Field Name="customer">
+          <DataField>customer</DataField>
+        </Field>
+        <Field Name="customerAccount">
+          <DataField>customerAccount</DataField>
+        </Field>
+        <Field Name="customerGroup">
+          <DataField>customerGroup</DataField>
+        </Field>
+        <Field Name="materialCode">
+          <DataField>material</DataField>
+        </Field>
+        <Field Name="internationalCode">
+          <DataField>internationalCode</DataField>
+        </Field>
+        <Field Name="itemGroup">
+          <DataField>itemGroup</DataField>
+        </Field>
+        <Field Name="calculatedAllocation">
+          <DataField>calculatedAllocation</DataField>
+        </Field>
+        <Field Name="productDescription">
+          <DataField>productDescription</DataField>
+        </Field>
+        <Field Name="onCounterDate">
+          <DataField>onCounterDate</DataField>
+        </Field>
+        <Field Name="saleOrg">
+          <DataField>saleOrg</DataField>
+        </Field>
+        <Field Name="multiple">
+          <DataField>multiple</DataField>
+        </Field>
+        <Field Name="EAN">
+          <DataField>EAN</DataField>
+        </Field>
+        <Field Name="totalAllocationQuantity">
+          <DataField>totalAllocationQuantity</DataField>
+        </Field>
+        <Field Name="versionName">
+          <DataField>versionName</DataField>
+        </Field>
+        <Field Name="rrpROI">
+          <DataField>rrpROI</DataField>
+        </Field>
+        <Field Name="rrpUK">
+          <DataField>rrpUK</DataField>
+        </Field>
+        <Field Name="listPriceUK">
+          <DataField>listPriceUK</DataField>
+        </Field>
+        <Field Name="listPriceROI">
+          <DataField>listPriceROI</DataField>
+        </Field>
+        <Field Name="animationName">
+          <DataField>animationName</DataField>
+        </Field>
+        <Field Name="animationCode">
+          <DataField>animationCode</DataField>
+        </Field>
+        <Field Name="CustomerGroup_RetailUplift">
+          <DataField>CustomerGroup_RetailUplift</DataField>
+        </Field>
+        <Field Name="CustomerGroup_ManualFixed">
+          <DataField>CustomerGroup_ManualFixed</DataField>
+        </Field>
+        <Field Name="Customer_RetailUplift">
+          <DataField>Customer_RetailUplift</DataField>
+        </Field>
+        <Field Name="Label">
+          <DataField>Label</DataField>
+        </Field>
+        <Field Name="SAPDespatchCode">
+          <DataField>SAPDespatchCode</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@showCustomerGroups">
+            <Value>0</Value>
+          </QueryParameter>
+          <QueryParameter Name="@allocationVersion">
+            <Value>=Parameters!AllocationVersion.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@customerGroup">
+            <Value>=Parameters!CustomerGroup.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@salesEmployee">
+            <Value>=Parameters!SalesEmployee.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@SAPDespatchCodes">
+            <Value>=Parameters!SAP.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@OrderTypes">
+            <Value>=Parameters!OrderType.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@OrderedInSAP">
+            <Value>=Parameters!OrderedInSAP.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+    <DataSet Name="SAPDespatchCodes">
+      <Fields>
+        <Field Name="SAPDespatchCode">
+          <DataField>SAPDespatchCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="iterator">
+          <DataField>iterator</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>LorealOptimise</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>up_allocationReport_SAPDespatchCodeParameter</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@salesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@divisionID">
+            <Value>=Parameters!DivisionID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>57.75cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Subreport Name="subreport1">
+        <Parameters>
+          <Parameter Name="SalesDrive">
+            <Value>=Parameters!salesDrive.Value</Value>
+          </Parameter>
+          <Parameter Name="Version">
+            <Value>=Join(Parameters!AllocationVersion.Label, ", ")</Value>
+          </Parameter>
+          <Parameter Name="Group">
+            <Value>=Parameters!CustomerGroup.Value</Value>
+          </Parameter>
+          <Parameter Name="Ordered">
+            <Value>=Parameters!OrderedInSAP.Label</Value>
+          </Parameter>
+          <Parameter Name="OrderType">
+            <Value>=Join(Parameters!OrderType.Label, ", ")</Value>
+          </Parameter>
+          <Parameter Name="SAP">
+            <Value>=Join(Parameters!SAP.Value, ", ")</Value>
+          </Parameter>
+        </Parameters>
+        <Top>0.15cm</Top>
+        <ReportName>AllocationReport_Header</ReportName>
+        <Width>13.25cm</Width>
+        <ZIndex>3</ZIndex>
+        <Left>0.25cm</Left>
+        <Height>5.75cm</Height>
+      </Subreport>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>5cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>2</ZIndex>
+        <DataSetName>Main</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>3.34286cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup10">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!animationName.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Label.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=Fields!animationName.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox25">
+                  <rd:DefaultName>textbox25</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>16</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!animationName.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.25cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup17">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!onCounterDate.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox43">
+                  <rd:DefaultName>textbox43</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>15</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!onCounterDate.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup11">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!animationCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox26">
+                  <rd:DefaultName>textbox26</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>14</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!animationCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_SAPDespatchCode">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!SAPDespatchCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="SAPDespatchCode_1">
+                  <rd:DefaultName>SAPDespatchCode_1</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>13</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!SAPDespatchCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup4">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemGroup.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!itemGroup.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox17">
+                  <rd:DefaultName>textbox17</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!itemGroup.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!materialCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!materialCode.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox13">
+                  <rd:DefaultName>textbox13</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!materialCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>4.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup3">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!productDescription.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox16">
+                  <rd:DefaultName>textbox16</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!productDescription.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup6">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!internationalCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox31">
+                  <rd:DefaultName>textbox31</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!internationalCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup7">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!multiple.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox32">
+                  <rd:DefaultName>textbox32</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!multiple.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup8">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!EAN.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox33">
+                  <rd:DefaultName>textbox33</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!EAN.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup9">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!totalAllocationQuantity.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox34">
+                  <rd:DefaultName>textbox34</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!totalAllocationQuantity.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup12">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!rrpROI.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox27">
+                  <rd:DefaultName>textbox27</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!rrpROI.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup13">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!rrpUK.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox28">
+                  <rd:DefaultName>textbox28</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!rrpUK.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup14">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!listPriceUK.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox29">
+                  <rd:DefaultName>textbox29</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!listPriceROI.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.18782cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup15">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!listPriceROI.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox30">
+                  <rd:DefaultName>textbox30</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>=IIF(Isnothing(Fields!listPriceUK.Value), "Bold", "Normal")</FontWeight>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Isnothing(Fields!listPriceUK.Value), "TOTAL", Fields!listPriceUK.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.75cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_RowGroup16">
+                <GroupExpressions>
+                  <GroupExpression>0</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox163">
+                  <rd:DefaultName>textbox163</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Visibility>
+          <Hidden>=IIF(Parameters!CustomerDisplay.Value = 1, true, false)</Hidden>
+        </Visibility>
+        <Top>6.15cm</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>1.45926cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup7">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!saleOrg.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!saleOrg.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox24">
+                  <rd:DefaultName>textbox24</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <TextAlign>Left</TextAlign>
+                    <VerticalAlign>Bottom</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <LineHeight>1cm</LineHeight>
+                  </Style>
+                  <ZIndex>20</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!saleOrg.Value = "zzz", "", Fields!saleOrg.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.82434cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup4">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!customerGroup.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!customerGroup.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="customerGroup">
+                  <rd:DefaultName>customerGroup</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>9pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>19</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!customerGroup.Value = "zzz90TOTAL", "",
+	IIF(Fields!customerGroup.Value = "zzz91STOCK", "",
+	iif(Fields!customerGroup.Value = "zzz92DIFFERENCE", "",
+		Fields!customerGroup.Value)))</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.82434cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup3">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!customerAccount.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!customer.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox14">
+                  <rd:DefaultName>textbox14</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>=IIF(Parameters!CustomerDisplay.Value = 1, true, false)</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>18</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!customerAccount.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>0.82434cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_ColumnGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!customer.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!customerGroup.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=Fields!customer.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox12">
+                  <rd:DefaultName>textbox12</rd:DefaultName>
+                  <Visibility>
+                    <Hidden>=IIF(Parameters!CustomerDisplay.Value = 1, true, false)</Hidden>
+                  </Visibility>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>17</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!customerGroup.Value = "zzz90TOTAL", "TOTAL",
+	IIF(Fields!customerGroup.Value = "zzz91STOCK", "STOCK",
+	iif(Fields!customerGroup.Value = "zzz92DIFFERENCE", "DIFFERENCE",
+		Fields!customer.Value)))</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>56.78452cm</Width>
+        <Corner>
+          <ReportItems>
+            <Rectangle Name="rectangle1">
+              <ZIndex>21</ZIndex>
+              <ReportItems>
+                <Textbox Name="textbox74">
+                  <Top>1.5cm</Top>
+                  <Width>3.26178cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>18</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>48.49998cm</Left>
+                  <Height>0.75cm</Height>
+                  <Value>Customer Group:</Value>
+                </Textbox>
+                <Textbox Name="textbox75">
+                  <Top>0.75cm</Top>
+                  <Width>3.51178cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <VerticalAlign>Bottom</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>17</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>48.24998cm</Left>
+                  <Height>0.75cm</Height>
+                  <Value>Sales Organization:</Value>
+                </Textbox>
+                <Textbox Name="textbox77">
+                  <Top>3cm</Top>
+                  <Width>3.26178cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>16</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>48.25cm</Left>
+                  <Height>0.9cm</Height>
+                  <Value>Customer:</Value>
+                </Textbox>
+                <Textbox Name="textbox78">
+                  <Top>2.25cm</Top>
+                  <Width>3.26178cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>15</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>48.49998cm</Left>
+                  <Height>0.75cm</Height>
+                  <Value>Customer Account:</Value>
+                </Textbox>
+                <Textbox Name="textbox1">
+                  <Top>3cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>14</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>0.2202cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Animation Name</Value>
+                </Textbox>
+                <Textbox Name="textbox2">
+                  <Top>2.75cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>13</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>6.5cm</Left>
+                  <Height>1.16641cm</Height>
+                  <Value>Animation Code</Value>
+                </Textbox>
+                <Textbox Name="textbox3">
+                  <Top>2.75cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>9.75cm</Left>
+                  <Height>1.16641cm</Height>
+                  <Value>SAP Promotion Despatch Code</Value>
+                </Textbox>
+                <Textbox Name="textbox4">
+                  <Top>3cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>13cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Item Group</Value>
+                </Textbox>
+                <Textbox Name="textbox7">
+                  <Top>2.75cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>3.5cm</Left>
+                  <Height>1.16641cm</Height>
+                  <Value>National OnCounter Date</Value>
+                </Textbox>
+                <Textbox Name="textbox23">
+                  <Top>3cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>41.75cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>List Price (ROI)</Value>
+                </Textbox>
+                <Textbox Name="textbox35">
+                  <Top>3cm</Top>
+                  <Width>2.7202cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>29cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>EAN</Value>
+                </Textbox>
+                <Textbox Name="textbox36">
+                  <Top>3cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>35.5cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>RRP (ROI)</Value>
+                </Textbox>
+                <Textbox Name="textbox37">
+                  <Top>3cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>32cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Total Allocation</Value>
+                </Textbox>
+                <Textbox Name="textbox38">
+                  <Top>3cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>25.75cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Multiple</Value>
+                </Textbox>
+                <Textbox Name="textbox44">
+                  <Top>3cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>38.5cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>RRP (UK)</Value>
+                </Textbox>
+                <Textbox Name="textbox5">
+                  <Top>3cm</Top>
+                  <Width>2.90234cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>16.25cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Material Code</Value>
+                </Textbox>
+                <Textbox Name="textbox6">
+                  <Top>3cm</Top>
+                  <Width>4.19882cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>19.32cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>Description</Value>
+                </Textbox>
+                <Textbox Name="textbox9">
+                  <Top>2.75cm</Top>
+                  <Width>2.01194cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>23.6cm</Left>
+                  <Height>1.16641cm</Height>
+                  <Value>International Code</Value>
+                </Textbox>
+                <Textbox Name="textbox60">
+                  <Top>3cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Left>45cm</Left>
+                  <Height>0.91641cm</Height>
+                  <Value>List Price (UK)</Value>
+                </Textbox>
+              </ReportItems>
+            </Rectangle>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>1cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="calculatedAllocation">
+                    <rd:DefaultName>calculatedAllocation</rd:DefaultName>
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>=iif(Fields!CustomerGroup_RetailUplift.Value &gt; 0 OR Fields!CustomerGroup_ManualFixed.Value &gt; 0 OR Fields!Customer_RetailUplift.Value &gt; 0, "Bold", "Normal")</FontWeight>
+                      <TextAlign>Left</TextAlign>
+                      <PaddingLeft>1pt</PaddingLeft>
+                      <PaddingRight>1pt</PaddingRight>
+                      <PaddingTop>1pt</PaddingTop>
+                      <PaddingBottom>1pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=iif(Isnumeric(Sum(Fields!calculatedAllocation.Value)), Sum(Fields!calculatedAllocation.Value), 0)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>4.93228cm</Height>
+        <Left>0.25cm</Left>
+      </Matrix>
+      <Matrix Name="matrix2">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>4.5cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <ZIndex>1</ZIndex>
+        <DataSetName>Main</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>2.99666cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!animationName.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!Label.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=Fields!animationName.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox19">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>16</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!animationName.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup16">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!onCounterDate.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox79">
+                  <rd:DefaultName>textbox79</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>15</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!onCounterDate.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!animationCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox45">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>14</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!animationCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_SAPDespatchCode">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!SAPDespatchCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="SAPDespatchCode">
+                  <rd:DefaultName>SAPDespatchCode</rd:DefaultName>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>13</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!SAPDespatchCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup3">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemGroup.Value</GroupExpression>
+                  <GroupExpression>=Fields!animationName.Value + Fields!itemGroup.Value + Fields!materialCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!itemGroup.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox46">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!itemGroup.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup4">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!materialCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!materialCode.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox47">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!materialCode.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>3.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup5">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!productDescription.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox48">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <Value>=Fields!productDescription.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>1.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup6">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!internationalCode.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox49">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!internationalCode.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup7">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!multiple.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox50">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!multiple.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup8">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!EAN.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox51">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!EAN.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup9">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!totalAllocationQuantity.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox52">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!totalAllocationQuantity.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup10">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!rrpROI.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox53">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!rrpROI.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup11">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!rrpUK.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox54">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!rrpUK.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup12">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!listPriceUK.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox55">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, Fields!listPriceROI.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup13">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!listPriceROI.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox56">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>=IIF(Isnothing(Fields!listPriceUK.Value), "Bold", "Normal")</FontWeight>
+                    <Format>N2</Format>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!materialCode.Value = "(empty)", Nothing, IIF(Isnothing(Fields!listPriceUK.Value), "TOTAL", Fields!listPriceUK.Value))</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>2.9702cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix2_RowGroup14">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!itemGroup.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="textbox57">
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontSize>8pt</FontSize>
+                    <TextAlign>Center</TextAlign>
+                    <VerticalAlign>Middle</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value />
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <Visibility>
+          <Hidden>=IIF(Parameters!CustomerDisplay.Value = 2, true, false)</Hidden>
+        </Visibility>
+        <Top>11.25cm</Top>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>2.13334cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix2_ColumnGroup1">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!saleOrg.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!saleOrg.Value</FilterExpression>
+                    <Operator>NotEqual</Operator>
+                    <FilterValues>
+                      <FilterValue />
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!saleOrg.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox58">
+                  <CanShrink>true</CanShrink>
+                  <Style>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Left</TextAlign>
+                    <VerticalAlign>Bottom</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <LineHeight>0.5cm</LineHeight>
+                  </Style>
+                  <ZIndex>18</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!saleOrg.Value = "zzz", "", Fields!saleOrg.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+          <ColumnGrouping>
+            <Height>1.03307cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix2_ColumnGroup2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!customerGroup.Value</GroupExpression>
+                </GroupExpressions>
+                <Parent>=Fields!saleOrg.Value</Parent>
+              </Grouping>
+              <Sorting>
+                <SortBy>
+                  <SortExpression>=Fields!saleOrg.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+                <SortBy>
+                  <SortExpression>=Fields!customerGroup.Value</SortExpression>
+                  <Direction>Ascending</Direction>
+                </SortBy>
+              </Sorting>
+              <ReportItems>
+                <Textbox Name="textbox59">
+                  <rd:DefaultName>textbox59</rd:DefaultName>
+                  <Style>
+                    <FontStyle>Italic</FontStyle>
+                    <FontFamily>Tahoma</FontFamily>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <LineHeight>1cm</LineHeight>
+                  </Style>
+                  <ZIndex>17</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=IIF(Fields!customerGroup.Value = "zzz90TOTAL", "TOTAL",
+	IIF(Fields!customerGroup.Value = "zzz91STOCK", "STOCK",
+	iif(Fields!customerGroup.Value = "zzz92DIFFERENCE", "DIFFERENCE",
+		Fields!customerGroup.Value)))</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Width>52.04966cm</Width>
+        <Corner>
+          <ReportItems>
+            <Rectangle Name="rectangle2">
+              <ZIndex>19</ZIndex>
+              <ReportItems>
+                <Textbox Name="textbox8">
+                  <rd:DefaultName>textbox8</rd:DefaultName>
+                  <Top>2.25cm</Top>
+                  <Width>2.99666cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>16</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>Animation Name</Value>
+                </Textbox>
+                <Textbox Name="textbox10">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>15</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>5.96686cm</Left>
+                  <Value>Animation Code</Value>
+                </Textbox>
+                <Textbox Name="textbox11">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>14</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>8.93706cm</Left>
+                  <Value>SAP Promotion Despatch Code</Value>
+                </Textbox>
+                <Textbox Name="textbox18">
+                  <Top>2.25cm</Top>
+                  <Width>2.9202cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>13</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>11.90726cm</Left>
+                  <Value>Item Group</Value>
+                </Textbox>
+                <Textbox Name="textbox20">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>12</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>14.87746cm</Left>
+                  <Value>Material Code</Value>
+                </Textbox>
+                <Textbox Name="textbox21">
+                  <Top>2.25cm</Top>
+                  <Width>3.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>11</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>17.84766cm</Left>
+                  <Value>Description</Value>
+                </Textbox>
+                <Textbox Name="textbox22">
+                  <Top>2.25cm</Top>
+                  <Width>1.96194cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>10</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>21.81786cm</Left>
+                  <Value>International Code</Value>
+                </Textbox>
+                <Textbox Name="textbox39">
+                  <Top>2.25cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>9</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>38.77979cm</Left>
+                  <Value>List Price (ROI)</Value>
+                </Textbox>
+                <Textbox Name="textbox40">
+                  <Top>2.25cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>8</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>41.77979cm</Left>
+                  <Value>List Price (UK)</Value>
+                </Textbox>
+                <Textbox Name="textbox41">
+                  <Top>1.5cm</Top>
+                  <Width>3.25cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>7</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>44.25cm</Left>
+                  <Height>0.5cm</Height>
+                  <Value>Sales Organization:</Value>
+                </Textbox>
+                <Textbox Name="textbox42">
+                  <Top>2.25cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>6</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>44.75cm</Left>
+                  <Height>0.6cm</Height>
+                  <Value>Customer Group:</Value>
+                </Textbox>
+                <Textbox Name="textbox67">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>5</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>26.7798cm</Left>
+                  <Value>EAN</Value>
+                </Textbox>
+                <Textbox Name="textbox68">
+                  <Top>2.25cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>4</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>32.77979cm</Left>
+                  <Value>RRP (ROI)</Value>
+                </Textbox>
+                <Textbox Name="textbox69">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>29.77979cm</Left>
+                  <Value>Total Allocation</Value>
+                </Textbox>
+                <Textbox Name="textbox70">
+                  <Top>2.25cm</Top>
+                  <Width>3cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>23.7798cm</Left>
+                  <Value>Multiple</Value>
+                </Textbox>
+                <Textbox Name="textbox71">
+                  <Top>2.25cm</Top>
+                  <Width>2.75cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Left>35.77979cm</Left>
+                  <Value>RRP (UK)</Value>
+                </Textbox>
+                <Textbox Name="textbox81">
+                  <Top>2.25cm</Top>
+                  <Width>2.9702cm</Width>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>700</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <CanGrow>true</CanGrow>
+                  <Left>2.99666cm</Left>
+                  <Value>National OnCounter Date</Value>
+                </Textbox>
+              </ReportItems>
+            </Rectangle>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>1cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="textbox80">
+                    <Style>
+                      <FontFamily>Tahoma</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <TextAlign>Left</TextAlign>
+                      <PaddingLeft>1pt</PaddingLeft>
+                      <PaddingRight>1pt</PaddingRight>
+                      <PaddingTop>1pt</PaddingTop>
+                      <PaddingBottom>1pt</PaddingBottom>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=IIF(Fields!materialCode.Value = "(empty)", "", IIF(IsNumeric(Sum(Fields!calculatedAllocation.Value)), Sum(Fields!calculatedAllocation.Value), 0))</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+        <Height>4.16641cm</Height>
+        <Left>0.25cm</Left>
+      </Matrix>
+      <Textbox Name="textbox157">
+        <rd:DefaultName>textbox157</rd:DefaultName>
+        <Top>15.6cm</Top>
+        <Width>52cm</Width>
+        <Style>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <CanGrow>true</CanGrow>
+        <Height>0.63492cm</Height>
+        <Value>=First(Fields!Footer.Value, "Footer")</Value>
+      </Textbox>
+    </ReportItems>
+    <Height>16.65cm</Height>
+  </Body>
+  <Language>en-GB</Language>
+  <PageHeight>11.7in</PageHeight>
+</Report>

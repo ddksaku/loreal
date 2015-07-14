@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "LorealOptimiseReports", "Report Project4\LorealOptimiseReports.rptproj", "{F517923A-CBF6-46E6-BE15-654B8EB2FA97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Production|Default = Production|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Debug|Default.ActiveCfg = Debug
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Debug|Default.Build.0 = DebugLocal
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Debug|Default.Deploy.0 = DebugLocal
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.DebugLocal|Default.Build.0 = DebugLocal
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Production|Default.ActiveCfg = Production
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Production|Default.Build.0 = Production
+		{F517923A-CBF6-46E6-BE15-654B8EB2FA97}.Production|Default.Deploy.0 = Production
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

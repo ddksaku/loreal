@@ -1,0 +1,134 @@
+﻿<local:BaseListUserControl x:Class="LorealOptimiseGui.Lists.CustomerStores"
+                           x:TypeArguments="Lists:CustomerManager, LorealOptimiseData:Customer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:dxee="clr-namespace:DevExpress.Xpf.Editors;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:dxe="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"                           
+    xmlns:controls="clr-namespace:LorealOptimiseGui.Controls"
+    xmlns:LorealOptimiseData="clr-namespace:LorealOptimiseData;assembly=LorealOptimiseData"
+    xmlns:Lists="clr-namespace:LorealOptimiseBusiness.Lists;assembly=LorealOptimiseBusiness"
+    xmlns:Editors="clr-namespace:DevExpress.Xpf.Editors;assembly=DevExpress.Xpf.Core.v11.1">
+    <Grid>
+        <Grid.RowDefinitions>            
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Name="lblTitle" Grid.Row="0" Content="Customer Stores" Margin="2" HorizontalAlignment="Left" />
+        <Button Visibility="Hidden" Grid.Row="0" Grid.Column="1" Name="btnRefresh" Content="Refresh" Click="Button_Click"></Button>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*" MaxWidth="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="160"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Label Content="Customer"></Label>
+                <Editors:TextEdit Width="80" Name="txtCustomer" VerticalAlignment="Center" Margin="2" KeyDown="txtCustomer_KeyDown" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                <Label Content="Account Number" HorizontalAlignment="Right"></Label>
+                <Editors:TextEdit Width="80" Name="txtAccount" VerticalAlignment="Center" Margin="2" KeyDown="txtCustomer_KeyDown" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="4">
+                <Label Content="Customer Group" HorizontalAlignment="Right"></Label>
+                <Editors:ComboBoxEdit Height="25" Width="140" Name="cboCustomerGroupFilter" DisplayMember="FullName" ValueMember="ID" KeyDown="txtCustomer_KeyDown"></Editors:ComboBoxEdit>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="6">
+                <Label Content="Sales Employee" HorizontalAlignment="Right"></Label>
+                <Editors:ComboBoxEdit Height="25" Width="140" Name="cboSalesEmployeeFilter" DisplayMember="FullName" ValueMember="ID" KeyDown="txtCustomer_KeyDown"></Editors:ComboBoxEdit>
+            </StackPanel>
+            <Button Width="80" Grid.Column="8" Content="Filter" Name="btnFilter" HorizontalAlignment="Right" Click="Button_Click" Height="25"></Button>
+            <Button Width="150" Height="25" Margin="2" Grid.Column="9" Content="Generate Capacity" Name="btnGenerate" HorizontalAlignment="Right" Click="btnGenerate_Click"></Button>
+        </Grid>
+        <dxg:GridControl Grid.Row="3" Grid.ColumnSpan="2" DataSource="{Binding}" x:Name="grdCustomerStores">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="SalesArea.Code" Header="Sales Area Code" ReadOnly="True" />
+                <dxg:GridColumn FieldName="IDSalesArea_AllocationSalesArea" Header="Sales Area Name" Name="colSalesArea">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboSalesArea" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="CustomerGroupCode" Header="Customer Group Code" UnboundType="String" UnboundExpression="[CustomerGroup.Code]" ReadOnly="True" />
+                <dxg:GridColumn FieldName="IDCustomerGroup" Header="Customer Group Name" Name="colCustomerGroup" GroupInterval="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboCustomerGroup" DisplayMember="FullName" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                    
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="AccountNumber" Header="Account Number" Name="colAccountNumber" />
+                <dxg:GridColumn FieldName="Name" Header="Store Name" Name="colStoreName" />
+                <dxg:GridColumn FieldName="IDSalesEmployee" Header="Sales Employee Name" Name="colSalesEmployee">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings IsTextEditable="False" x:Name="cboSalesEmployee" DisplayMember="Name" ValueMember="ID"></dxe:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="AllocationCountry" Header="Allocation Country" UnboundType="String" UnboundExpression="[SalesArea.SalesOrganization.Name]" ReadOnly="True" />
+                <dxg:GridColumn x:Name="colRetailSales" FieldName="RetailSales" Header="Retail Sales" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:SpinEditSettings MaskType="Numeric" DisplayFormat="n0" IsFloatValue="False"></dxe:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Rank" Header="Ranking" ReadOnly="True" Visible="True" />
+                <dxg:GridColumn FieldName="IncludeInSystem" Name="colSystemInclude">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings></dxe:CheckEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="StoreCategory" Header="Store Category" Name="colStoreCategory">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <controls:CheckComboBox Loaded="chkCboStoreCategory_Loaded" PopupOpening="chkCboStoreCategory_PopupOpening" x:Name="chkCboStoreCategory" DisplayMember="Name" ValueMember="ID" PopupClosed="chkCboStoreCategory_PopupClosed" ParentDataID="{Binding Data.ID}" UpdateSelectedItems="chkCboStoreCategory_UpdateSelectedItems" />
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="colSource" FieldName="Source" UnboundType="String" UnboundExpression="Iif([Manual], 'Manual', 'SAP')" ReadOnly="True" />
+                <dxg:GridColumn Header="Operation" Name="colOperation">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Button x:Name="btnAddSales" Content="Add Sales" Grid.Row="0" Click="btnAddSales_Click" Margin="3,3,3,3" Initialized="btnAddSales_Initialized" />
+                                <Button x:Name="btnReplaceAccNumber" Content="Merge" Grid.Row="1" Click="btnReplaceAccNumber_Click" Margin="3,3,3,3" Initialized="btnAddSales_Initialized" />
+                                <Button x:Name="btnSetCapacities" Content="Set capacity" Grid.Row="2" Click="btnSetCapacities_Click" Margin="3,3,3,3" Initialized="btnAddSales_Initialized" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Data.Manual}" Value="False">
+                                    <Setter Property="Visibility" Value="Collapsed" TargetName="btnReplaceAccNumber" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+
+            </dxg:GridControl.Columns>
+
+            <dxg:GridControl.View>
+                <dxg:TableView NewItemRowPosition="Top" ShowAutoFilterRow="True" AutoWidth="True" InitNewRow="TableView_InitNewRow" ShowingEditor="TableView_ShowingEditor" RowCanceled="TableView_RowCanceled" FocusedRowChanged="TableView_FocusedRowChanged" ShownEditor="TableView_ShownEditor" CellValueChanging="TableView_CellValueChanging" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</local:BaseListUserControl>

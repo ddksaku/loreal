@@ -1,0 +1,97 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.ProductDetailAnimation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:LorealOptimiseBusiness="clr-namespace:LorealOptimiseBusiness;assembly=LorealOptimiseBusiness">
+    <Grid>
+        <dxg:GridControl Name="grdProductDetails" DataSource="{Binding Animation.ObservableProductDetails}" AutoExpandAllGroups="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <dxg:GridControl.View>
+                <dxg:TableView FocusedRow="{Binding SelectedProductDetail, Mode=TwoWay}" CellStyle="{StaticResource CellNormalStyle}" />
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <!--<dxg:GridColumn Visible="false" FieldName="IDAnimationProduct" Header="Product" Fixed="Left" Width="80" ReadOnly="True"  >
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings IsTextEditable="False" x:Name="cboProducts" DisplayMember="ProductIdentifier" ValueMember="ID"></Settings:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>-->
+                <dxg:GridColumn VisibleIndex="1" FieldName="ID" Header="ID" Fixed="Left" Visible="False">
+                </dxg:GridColumn>                
+                <dxg:GridColumn VisibleIndex="1" FieldName="AnimationProduct.ItemGroup.Name" Header="Item Group" Fixed="Left" Name="clmItemGroup" Width="90" ReadOnly="True">
+                </dxg:GridColumn>
+                <dxg:GridColumn VisibleIndex="2" FieldName="AnimationProduct.MaterialCode" Header="Material Code" Name="clmMaterialCode" Fixed="Left" Width="130" ReadOnly="True">
+                </dxg:GridColumn>
+                <dxg:GridColumn VisibleIndex="3" FieldName="AnimationProduct.Description" Header="Description" Name="clmProductDescription" Width="200" Fixed="Left" ReadOnly="True" BestFitArea="Rows" BestFitMaxRowCount="25" BestFitMode="Smart">
+                </dxg:GridColumn>
+                <dxg:GridColumn VisibleIndex="4" FieldName="AnimationProduct.SortOrder" Header="Sort Order" Name="clmSortOrder" Fixed="Left" Width="70" ReadOnly="True">
+                </dxg:GridColumn>
+
+                <dxg:GridColumn FieldName="IDSalesArea" Header="Country" Name="clmSalesArea" Width="90">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings IsTextEditable="False" x:Name="cboSalesArea" DisplayMember="Name" ValueMember="ID"></Settings:ComboBoxEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmRRP" FieldName="RRP" Header="RRP" Width="70">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" DisplayFormat="N2" Mask="N2" MaskType="Numeric"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="ListPrice" Header="List Price" ReadOnly="True" Width="90">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" DisplayFormat="N2" Mask="N2" MaskType="Numeric"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="AnimationProduct.Product.CIV" Header="Cost Price (CIV)" ReadOnly="True" Width="90">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" DisplayFormat="N2" Mask="N2" MaskType="Numeric"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="CostValue" Header="Cost Value (CIV)" ReadOnly="True" Width="90">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" DisplayFormat="N0" Mask="N0" MaskType="Numeric"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="Maximum Capacity" FieldName="MaximumCapacity" ReadOnly="True" Width="100">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmBDCQuantity" FieldName="BDCQuantity" Header="BDC Quantity" Width="90">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmForecastProcQuantity" FieldName="ForecastProcQuantity" Header="Forecast Procurement Quantity" Width="100" Validate="ForecastProcQuantity_Validate">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmAllocationQuantity" FieldName="AllocationQuantity" Header="Allocation Quantity" Width="90" Validate="AllocationQuantity_Validate">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings MinValue="0" IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Name="clmMarketingComments" FieldName="MarketingComments" Header="Marketing Comments" Width="120" Visible="False">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:MemoEditSettings></Settings:MemoEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="AllocationRemainder" Header="Allocation Remainder" Width="90" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:SpinEditSettings IsFloatValue="False"></Settings:SpinEditSettings>
+                    </dxg:GridColumn.EditSettings>                    
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="Fix" Name="colAllocate" Width="80">
+                    <dxg:GridColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Fix" x:Name="btnOpenAllocation" Click="btnOpenAllocation_Click"></Button>
+                        </DataTemplate>
+                    </dxg:GridColumn.CellTemplate>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+
+        </dxg:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

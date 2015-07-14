@@ -1,0 +1,50 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.AnimationList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:dxg="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:dx="clr-namespace:DevExpress.Xpf.Data;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui">
+    <LorealOptimiseGui:BaseUserControl.Resources>
+        <Style TargetType="dxg:GridColumn">
+            <Setter Property="AutoFilterCondition" Value="Contains"></Setter>
+        </Style>
+
+    </LorealOptimiseGui:BaseUserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Name="btnNewAnimation" Grid.Row="0" Width="130" Margin="2" Content="Add New Animation" HorizontalAlignment="Left" Click="btnNewAnimation_Click"></Button>
+        <dxg:GridControl Grid.Row="1" Name="grdAnimations" DataSource="{Binding AllAnimations}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Name" Header="Name" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="Code" Header="Code" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="SalesDrive.Name" Header="Sales Drive" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="Priority.Name" Header="Priority" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="AnimationType.Name" Header="Type" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="OnCounterDate" Header="On Counter Date" AutoFilterCondition="Contains">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="RequestedDeliveryDate" Header="Requested Delivery Date" AutoFilterCondition="Contains">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="StatusName" Header="Status" AutoFilterCondition="Contains" />
+                <dxg:GridColumn FieldName="DateCalculated" Header="Last Allocation Run" AutoFilterCondition="Contains">
+                    <dxg:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy HH:mm:ss" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" ShowAutoFilterRow="True" PreviewMouseDoubleClick="TableView_PreviewMouseDoubleClick" AllowEditing="False" PreviewKeyDown="TableView_PreviewKeyDown" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>

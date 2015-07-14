@@ -1,0 +1,89 @@
+﻿<LorealOptimiseGui:BaseUserControl x:Class="LorealOptimiseGui.Controls.CustomerGroupAnimation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:LorealOptimiseGui.Lists"
+    xmlns:Grid="clr-namespace:DevExpress.Xpf.Grid;assembly=DevExpress.Xpf.Grid.v11.1"
+    xmlns:Settings="clr-namespace:DevExpress.Xpf.Editors.Settings;assembly=DevExpress.Xpf.Core.v11.1"
+    xmlns:LorealOptimiseGui="clr-namespace:LorealOptimiseGui">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".26*"></ColumnDefinition>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width=".74*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Name="btnIncludeAll" Command="{Binding IncludeAllCommand}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" Width="100" VerticalAlignment="Center" Margin="3">Include All -&gt;&gt;</Button>
+        <Button Name="btnInclude" Command="{Binding IncludeCommand}" ToolTipService.IsEnabled="True" ToolTipService.ShowOnDisabled="True" ToolTip="{Binding IncludeErrorMessage, Mode = OneWay}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Width="100" VerticalAlignment="Bottom" Margin="3" Click="btnInclude_Click">Include -&gt;</Button>
+        <Button Name="btnRemove" Command="{Binding RemoveCommand}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Width="100" VerticalAlignment="Center" Margin="3" Click="btnRemove_Click">&lt;- Remove</Button>
+        <Button Name="btnRemoveAll" Command="{Binding RemoveAllCommand}" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" Width="100" VerticalAlignment="Top" Margin="3">&lt;&lt;- Remove All</Button>
+        <Grid:GridControl Name="grdCustomerGroups" Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" ItemsSource="{Binding CustomerGroups}">
+            <Grid:GridControl.Columns>
+                <Grid:GridColumn FieldName="Name" ReadOnly="True">
+                </Grid:GridColumn>
+                <Grid:GridColumn FieldName="Code" ReadOnly="True" Visible="False">
+                </Grid:GridColumn>
+                <Grid:GridColumn FieldName="SalesArea.Name" Header="Country" Name="clmCountry" ReadOnly="True">
+                </Grid:GridColumn>
+            </Grid:GridControl.Columns>
+            <Grid:GridControl.View>
+                <Grid:TableView CellStyle="{StaticResource CellNormalStyle}" SelectionChanged="grdCustomerGroups_SelectionChanged" AutoWidth="True" MultiSelectMode="Row" />
+            </Grid:GridControl.View>
+        </Grid:GridControl>
+        <Grid:GridControl Name="grdAnimationCustomerGroups" Grid.Row="1" Grid.Column="2" Grid.RowSpan="5" ItemsSource="{Binding Animation.ObservableAnimationCustomerGroups, Mode=TwoWay}" CustomUnboundColumnData="grdAnimationCustomerGroups_CustomUnboundColumnData">
+            <Grid:GridControl.Columns>
+                <Grid:GridColumn FieldName="CustomerGroupName" Header="Customer Group Name" UnboundType="String" ReadOnly="True" Width="170">
+                </Grid:GridColumn>
+                <Grid:GridColumn FieldName="CustomerGroupCode" Header="Customer Group Code" UnboundType="String" ReadOnly="True" Visible="False">
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colIncludeInAllocation" FieldName="IncludeInAllocation" Header="Include in Allocation YN" UnboundType="Boolean" ReadOnly="True" Visible="True">                    
+                </Grid:GridColumn>
+                <Grid:GridColumn FieldName="CustomerGroupSalesAreaName" Header="Country" UnboundType="String" ReadOnly="True">
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colRetailerType" FieldName="IDRetailerType" Header="Retailer Type" Validate="Column_Validate">
+                    <Grid:GridColumn.EditSettings>
+                        <Settings:ComboBoxEditSettings IsTextEditable="False" x:Name="cboRetailerType" DisplayMember="Name" ValueMember="ID"></Settings:ComboBoxEditSettings>
+                    </Grid:GridColumn.EditSettings>
+                    <Grid:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.RetailerType.Name}" Margin="3" TextWrapping="NoWrap" />
+                        </ControlTemplate>
+                    </Grid:GridColumn.DisplayTemplate>                    
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colCounterDate" FieldName="OnCounterDate" Header="Retailer On Counter Date" Width="75">
+                    <Grid:GridColumn.EditSettings>
+                        <Settings:DateEditSettings DisplayFormat="dd.MM.yyyy"></Settings:DateEditSettings>
+                    </Grid:GridColumn.EditSettings>
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colPLVDeliveryDate" FieldName="PLVDeliveryDate" Header="PLV Delivery Deadline" Width="75">
+                    <Grid:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </Grid:GridColumn.EditSettings>
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colPLVComponentDate" FieldName="PLVComponentDate" Header="PLV Component Deadline" Width="85">
+                    <Grid:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </Grid:GridColumn.EditSettings>
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colStockDate" FieldName="StockDate" Header="Stock Date" Width="75">
+                    <Grid:GridColumn.EditSettings>
+                        <Settings:DateEditSettings Mask="dd.MM.yyyy" MaskUseAsDisplayFormat="True"></Settings:DateEditSettings>
+                    </Grid:GridColumn.EditSettings>
+                </Grid:GridColumn>
+                <Grid:GridColumn Name="colSAPDespCode" FieldName="SAPDespatchCode" Header="SAP Despatch Code" Validate="Column_Validate" Width="80">
+                </Grid:GridColumn>
+                <Grid:GridColumn FieldName="Included" UnboundType="Boolean" UnboundExpression="Iif([ID]!='00000000-0000-0000-0000-000000000000', true, false)" ReadOnly="True" Visible="False" />
+            </Grid:GridControl.Columns>
+            <Grid:GridControl.View>
+                <Grid:TableView CellStyle="{StaticResource CellNormalStyle}" SelectionChanged="grdAnimationCustomerGroups_SelectionChanged" ShowGroupedColumns="True" AutoWidth="True" MultiSelectMode="Row" PreviewKeyDown="TableView_PreviewKeyDown" />
+            </Grid:GridControl.View>
+        </Grid:GridControl>
+    </Grid>
+</LorealOptimiseGui:BaseUserControl>
